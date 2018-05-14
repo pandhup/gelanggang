@@ -11,28 +11,24 @@
         <div class="x_content">
 
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-            <thead>
+            <thead class="text-center">
               <tr>
                 <td>No.</td>
-                <td>Nama event</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
+                <td>Nama Event</td>
+                <td>Tanggal Event</td>
+                <td>Lokasi</td>
+                <td>Status</td>
                 <td></td>
               </tr>
             </thead>
             <tbody>
                 <tr>
-                  <td>1</td>
+                  <td class="text-center">1</td>
                   <td>Web Gelanggang</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>
+                  <td>1 Januari 2018</td>
+                  <td>Gedung Gelanggang</td>
+                  <td>Berlangsung</td>
+                  <td class="text-center">
                     <div class="btn-group" role="group" aria-label="...">
                       {{-- Button M --}}
                       <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
