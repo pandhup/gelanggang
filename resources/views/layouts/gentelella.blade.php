@@ -29,6 +29,8 @@
     <link href="{{asset('/vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="{{asset('/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+    <!-- Dropzone.js -->
+    <link href="{{asset('/vendors/dropzone/dist/min/dropzone.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{asset('/build/css/custom.min.css')}}" rel="stylesheet">
@@ -310,6 +312,8 @@
     <script src="{{asset('/vendors/jszip/dist/jszip.min.js')}}"></script>
     <script src="{{asset('/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
     <script src="{{asset('/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+    <!-- Dropzone.js -->
+    <script src="{{asset('/vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
