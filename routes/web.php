@@ -46,6 +46,7 @@ Route::group(['prefix' => 'superadmin'], function()
     Route::get('home','SuperadminController@index');
 		Route::get('madmin','SuperadminController@madmin');
     Route::get('mmember','SuperadminController@mmember');
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });
 
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin'], function()
 	Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
     Route::get('home','AdminController@index');
 		Route::get('mmember','AdminController@mmember');
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });
 
@@ -63,6 +65,7 @@ Route::group(['prefix' => 'member'], function()
 {
 	Route::group(['middleware' => ['web', 'auth', 'member']], function () {
 		Route::get('home','MemberController@index');
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });
 
