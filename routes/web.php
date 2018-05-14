@@ -71,6 +71,6 @@ Route::group(['prefix' => 'member'], function()
 	});
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Auth::routes();
+//
+// Route::get('/home', 'HomeController@i ndex')->name('home');
