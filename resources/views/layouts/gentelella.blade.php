@@ -73,15 +73,15 @@
                 <div class="menu_section">
                   <h3>Management</h3>
                   <ul class="nav side-menu">
-                    <li><a href="home"><i class="fa fa-laptop"></i> home </a></li>
-                    <li><a href="madmin"><i class="fa fa-laptop"></i> Admin </a></li>
+                    <li><a href="home"><i class="fa fa-home"></i> home </a></li>
+                    <li><a href="madmin"><i class="fa fa-user"></i> Admin </a></li>
                     <li><a href="mmember"><i class="fa fa-laptop"></i> Member </a></li>
                   </ul>
                 </div>
                 <div class="menu_section">
                   <h3>Setting</h3>
                   <ul class="nav side-menu">
-                    <li><a href="#"><i class="fa fa-laptop"></i> Ubah Sandi </a></li>
+                    <li><a href="#"><i class="fa fa-pencil"></i> Ubah Sandi </a></li>
                   </ul>
                 </div>
               @elseif (Auth::user()->role == 'admin')
