@@ -25,4 +25,8 @@ class MemberController extends Controller
     {
         return view('vmember.home');
     }
+    public function event()
+    {
+        return view('vmember.event');
+    }
 }
