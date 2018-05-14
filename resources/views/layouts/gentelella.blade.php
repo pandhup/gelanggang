@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i>
                 @if (Auth::user()->role == 'superadmin')
                   <span><b>Super</b>Admin</span>
                 @elseif (Auth::user()->role == 'admin')
@@ -73,12 +73,16 @@
                 <div class="menu_section">
                   <h3>Management</h3>
                   <ul class="nav side-menu">
+                    <li><a href="home"><i class="fa fa-laptop"></i> home </a></li>
                     <li><a href="madmin"><i class="fa fa-laptop"></i> Admin </a></li>
                     <li><a href="mmember"><i class="fa fa-laptop"></i> Member </a></li>
                   </ul>
                 </div>
                 <div class="menu_section">
                   <h3>Setting</h3>
+                  <ul class="nav side-menu">
+                    <li><a href="#"><i class="fa fa-laptop"></i> Ubah Sandi </a></li>
+                  </ul>
                 </div>
               @elseif (Auth::user()->role == 'admin')
                 <div class="menu_section">
@@ -147,7 +151,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">John Doe
+                    <img src="images/img.jpg" alt="">{{ Auth::user()->name }}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
