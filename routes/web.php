@@ -57,6 +57,12 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('home','AdminController@index');
 		Route::get('mmember','AdminController@mmember');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+    Route::get('antrian', 'EventController@antrian');
+    Route::get('revisi', 'EventController@revisi');
+    Route::get('berlangsung', 'EventController@berlangsung');
+    Route::get('berakhir', 'EventController@berakhir');
+    Route::get('tolak', 'EventController@tolak');
+    Route::get('batal', 'EventController@batal');
 	});
 });
 

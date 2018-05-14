@@ -82,10 +82,20 @@
                 </div>
               @elseif (Auth::user()->role == 'admin')
                 <div class="menu_section">
-                  <h3>Management</h3>
-                  <ul class="nav side-menu">
-                    <li><a href="mmember"><i class="fa fa-laptop"></i> Member </a></li>
-                  </ul>
+                  <h3>General</h3>
+                <ul class="nav side-menu">
+                    <li><a href="{{url('admin/home')}}"><i class="fa fa-home"></i> Home </a></li>
+                    <li><a><i class="fa fa-edit"></i> Manajemen Event <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{url('admin/antrian')}}">Antrian</a></li>
+                            <li><a href="{{url('admin/revisi')}}">Revisi</a></li>
+                            <li><a href="{{url('admin/berlangsung')}}">Berlangsung</a></li>
+                            <li><a href="{{url('admin/berakhir')}}">Berakhir</a></li>
+                            <li><a href="{{url('admin/tolak')}}">Ditolak</a></li>
+                            <li><a href="{{url('admin/batal')}}">Dibatalkan</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 </div>
                 <div class="menu_section">
                   <h3>Setting</h3>
