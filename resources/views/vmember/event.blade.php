@@ -6,6 +6,7 @@
       <div class="x_panel">
         <div class="x_title">
           <h2>Event Table</h2>
+          @yield('create')
           <ul class="nav navbar-right panel_toolbox">
             <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target=".bs-create-modal-lg"><i class="glyphicon glyphicon-plus"></i> Create</button>
 
@@ -18,7 +19,7 @@
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                   </div>
                   <div class="modal-body">
-                    <h4>Text in a modal</h4>
+                    @yield('create')
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -57,7 +58,7 @@
                       <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
 
                       <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-md">
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
@@ -65,7 +66,7 @@
                               <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             </div>
                             <div class="modal-body">
-                              <h4>Text in a modal</h4>
+                              @yield('viewmodal')
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -77,7 +78,7 @@
 
                       {{-- Button M --}}
                       <div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-md">
                           <div class="modal-content">
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
@@ -85,7 +86,7 @@
                               <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             </div>
                             <div class="modal-body">
-                              <h4>Text in a modal</h4>
+                              @yield('editmodal')
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
