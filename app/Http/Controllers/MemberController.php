@@ -29,4 +29,8 @@ class MemberController extends Controller
     {
         return view('vmember.event');
     }
+    public function create()
+    {
+        return view('vmember.create');
+    }
 }

@@ -66,6 +66,7 @@ Route::group(['prefix' => 'member'], function()
 	Route::group(['middleware' => ['web', 'auth', 'member']], function () {
 		Route::get('home','MemberController@index');
     Route::get('event','MemberController@event');
+    Route::get('create','MemberController@create');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });

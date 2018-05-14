@@ -94,7 +94,8 @@
                 <div class="menu_section">
                   <h3>Post</h3>
                   <ul class="nav side-menu">
-                    <li><a href="event"><i class="fa fa-laptop"></i> Event </a></li>
+                    <li><a href="create"><i class="fa fa-laptop"></i> Create Event </a></li>
+                    <li><a href="event"><i class="fa fa-laptop"></i> List Event </a></li>
                   </ul>
                 </div>
                 <div class="menu_section">
