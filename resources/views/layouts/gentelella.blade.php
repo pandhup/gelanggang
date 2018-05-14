@@ -106,10 +106,13 @@
                 </div>
               @else
                 <div class="menu_section">
+                  <ul class="nav side-menu">
+                    <li><a href="home"><i class="fa fa-home"></i> Home </a></li>
+                  </ul>
                   <h3>Post</h3>
                   <ul class="nav side-menu">
-                    <li><a href="create"><i class="fa fa-laptop"></i> Create Event </a></li>
-                    <li><a href="event"><i class="fa fa-laptop"></i> List Event </a></li>
+                    <li><a href="create"><i class="fa fa-check-square-o"></i> Create Event </a></li>
+                    <li><a href="event"><i class="fa fa-bars"></i> List Event </a></li>
                   </ul>
                 </div>
                 <div class="menu_section">
