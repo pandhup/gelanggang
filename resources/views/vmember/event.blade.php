@@ -83,12 +83,11 @@
                                 <button type="submit" class="btn btn-success">Submit</button>
                               </div>
                             </div>
-
                           </form>
                         </div>
                       </div>
-                    {{-- end modal content --}}
-                  </div>
+                    </div>
+                  {{-- end modal content --}}
                 </div>
               </div>
             </div>
@@ -96,6 +95,7 @@
           </ul>
           <div class="clearfix"></div>
         </div>
+
         <div class="x_content">
 
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -115,7 +115,7 @@
                   <td>Web Gelanggang</td>
                   <td>1 Januari 2018</td>
                   <td>Gedung Gelanggang</td>
-                  <td>Berlangsung</td>
+                  <td class="text-center">Berlangsung <span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>
                   <td class="text-center">
                     <div class="btn-group" role="group" aria-label="...">
                       {{-- Button M --}}
@@ -127,7 +127,7 @@
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                               </button>
-                              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              <h4 class="modal-title" id="myModalLabel"><i class="fa fa-eye"></i> Detail Event</h4>
                             </div>
                             <div class="modal-body">
                               @yield('viewmodal')
@@ -147,18 +147,19 @@
                             <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
                               </button>
-                              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                              <h4 class="modal-title text-center" id="myModalLabel" ><i class="fa fa-pencil"></i> Edit Event</h4>
                             </div>
                             <div class="modal-body">
-                              @yield('editmodal')
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
+                              {{-- modal content --}}
+
+                              {{-- end modal content --}}
                           </div>
                         </div>
                       </div>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
 
                       <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
 
