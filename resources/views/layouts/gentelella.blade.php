@@ -10,7 +10,7 @@
     <title>Portal Gelanggang</title>
 
     <!-- Bootstrap -->
-    <link href="{{asset('/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet"> 
     <!-- Font Awesome -->
     <link href="{{asset('/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <!-- NProgress -->
