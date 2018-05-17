@@ -29,8 +29,7 @@ class SuperadminController extends Controller
       public function madmin()
       {
           $user = User::all();
-          $no = 1;
-          return view('vsuperadmin.madmin',compact('user','no'));
+          return view('vsuperadmin.madmin',compact('user'));
       }
       public function mmember()
       {

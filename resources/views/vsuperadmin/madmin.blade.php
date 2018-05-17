@@ -2,6 +2,18 @@
 
 @section('content')
 
+@if (Session::has('sukses_simpan'))
+<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Data has been saved.</div>
+@endif
+
+@if (Session::has('sukses_update'))
+<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Data has been updated.</div>
+@endif
+
+@if (isset($_GET['q']))
+<p>&nbsp;<i class="glyphicon glyphicon-search"></i> &nbsp; <i> Showing result for : <strong>{{ $_GET['q'] }}</strong></i> &bull; [ <a href="{{ url('/') }}">Clear</a>] </p>
+@endif
+
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
@@ -24,10 +36,12 @@
           </tr>
         </thead>
         <tbody>
+          <?php $no=1;  ?>
+          @foreach($user as $data)
           <tr>
-            <td>1</td>
-            <td>Snider</td>
-            <td>Customer@gmail.com</td>
+            <td>{{ $no++ }}</td>
+            <td>{{ $data->name }}</td>
+            <td>{{ $data->email }}</td>
             <td>
               <div class="btn-group" role="group" aria-label="...">
                 <!-- view button -->
@@ -40,6 +54,7 @@
               </div>
             </td>
           </tr>
+          @endforeach
         </tbody>
       </table>
 
