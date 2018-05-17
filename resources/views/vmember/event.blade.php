@@ -25,23 +25,25 @@
             <td></td>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td class="text-center">1</td>
-            <td>Web Gelanggang</td>
-            <td>1 Januari 2018</td>
-            <td>Gedung Gelanggang</td>
-            <td class="text-center">Berlangsung <span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>
-            <td class="text-center">
-              <div class="btn-group" role="group" aria-label="...">
-                {{-- Button M --}}
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
-                {{-- Button M --}}
-                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
-                {{-- modal dibawah --}}
-              </div>
-            </td>
-          </tr>
+        <tbody id="event-list">
+          @foreach ($event as $event)
+            <tr id="event">
+              <td class="text-center">{{ $no++ }}</td>
+              <td>{{ $event->nama }}</td>
+              <td>{{ $event->tanggal_mulai }}</td>
+              <td>{{ $event->lokasi }}</td>
+              <td class="text-center">{{ $event->status }}</td>
+              <td class="text-center">
+                <div class="btn-group" role="group" aria-label="...">
+                  {{-- Button M --}}
+                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  {{-- Button M --}}
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
+                  {{-- modal dibawah --}}
+                </div>
+              </td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
 
@@ -49,6 +51,9 @@
   </div>
 </div>
 </div>
+
+<!-- Passing BASE URL to AJAX -->
+<input id="url" type="hidden" value="{{ \Request::url() }}">
 
 {{-- CREATE MODAL --}}
 <div class="modal fade bs-create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -68,13 +73,13 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Event</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="nama event" required="required">
+                  <input type="text" class="form-control" id="namaevent" placeholder="nama event" required="required">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="lokasi" required="required">
+                  <input type="text" class="form-control" id="lokasi" placeholder="lokasi" required="required">
                 </div>
               </div>
               <div class="form-group">
@@ -96,13 +101,13 @@
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi Event</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <textarea class="form-control" rows="3" placeholder='Type here'></textarea>
+                    <textarea class="form-control" rows="3" id="deskripsi" placeholder='Type here'></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Kontak</label>
                   <div class="col-md-6 col-sm-9 col-xs-12 form-group has-feedback">
-                    <input type="text" class="form-control has-feedback-left" id="inputSuccess5" placeholder="Phone" required="required">
+                    <input type="text" class="form-control has-feedback-left" id="kontak" placeholder="Phone" required="required">
                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                   </div>
                 </div>
@@ -121,7 +126,8 @@
                   <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                     <button type="reset" class="btn btn-primary">Reset</button>
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-success" id="btn-submit" value="add">Submit</button>
+                    <input type="hidden" id="event_id" name="event_id" value="0">
                   </div>
                 </div>
               </form>

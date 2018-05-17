@@ -235,9 +235,10 @@
   <script src="{{asset('/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
   <!-- Dropzone.js -->
   <script src="{{asset('/vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
-
+  <!-- ajaxmember.js -->
+  <script src="{{asset('/ajax/ajaxmember.js')}}"></script>
   <!-- Custom Theme Scripts -->
-  <script src="../build/js/custom.min.js"></script>
+  <script src="{{asset('/build/js/custom.min.js')}}"></script>
 
   {{-- UBAH SANDI MODAL --}}
   <div class="modal fade bs-password-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
