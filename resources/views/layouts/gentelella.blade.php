@@ -7,6 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Important to work AJAX CSRF -->
+  <meta name="_token" content="{!! csrf_token() !!}" />
+
   <title>Portal Gelanggang</title>
 
   <!-- Bootstrap -->
