@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User as User;
 
@@ -33,7 +34,14 @@ class SuperadminController extends Controller
       }
       public function mmember()
       {
-          $user = User::all()->where('role','=','member');
-          return view('vsuperadmin.mmember', ['user' => $user]);
+          $user = DB::table('users')
+          -> join('ukm','users.id_ukm','=','ukm.id_ukm')
+          -> where('role','=','member')
+          -> select('ukm.nama_ukm','users.email')
+          -> get();
+
+          $ukm = DB::table('ukm')->select('id_ukm','nama_ukm')->orderBy('nama_ukm','asc')->get();
+
+          return view('vsuperadmin.mmember') -> with('user',$user) -> with('ukm',$ukm);
       }
 }

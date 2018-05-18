@@ -29,7 +29,7 @@
             @foreach($user as $data)
             <tr>
               <td>{{ $no++ }}</td>
-              <td>{{ $data->id_ukm }}</td>
+              <td>{{ $data->nama_ukm }}</td>
               <td>{{ $data->email }}/td>
               <td>
                 <div class="btn-group" role="group" aria-label="...">
@@ -69,11 +69,10 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <select class="form-control">
-                    <option>Choose option</option>
-                    <option>Option one</option>
-                    <option>Option two</option>
-                    <option>Option three</option>
-                    <option>Option four</option>
+                    <option>Pilih UKM</option>
+                    @foreach ($ukm as $data)
+                    <option>{{ $data->nama_ukm }}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
