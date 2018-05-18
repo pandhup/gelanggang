@@ -25,10 +25,12 @@
           </thead>
 
           <tbody>
+            <?php $no=1;  ?>
+            @foreach($user as $data)
             <tr>
-              <td>1</td>
-              <td>Forkom</td>
-              <td>ukm@gmail.com</td>
+              <td>{{ $no++ }}</td>
+              <td>{{ $data->id_ukm }}</td>
+              <td>{{ $data->email }}/td>
               <td>
                 <div class="btn-group" role="group" aria-label="...">
                   <!-- veiw button -->
@@ -40,6 +42,7 @@
                 </div>
               </td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>

@@ -28,13 +28,12 @@ class SuperadminController extends Controller
       }
       public function madmin()
       {
-          $user = User::all();
-          return view('vsuperadmin.madmin',compact('user'));
+          $user = User::all()->where('role','=','admin');
+          return view('vsuperadmin.madmin', ['user' => $user]);
       }
       public function mmember()
       {
-          $user = User::all();
-          $no = 1;
-          return view('vsuperadmin.mmember',compact('user','no'));
+          $user = User::all()->where('role','=','member');
+          return view('vsuperadmin.mmember', ['user' => $user]);
       }
 }
