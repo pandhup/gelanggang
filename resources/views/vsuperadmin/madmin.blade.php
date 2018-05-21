@@ -10,8 +10,8 @@
 <div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Data has been updated.</div>
 @endif
 
-@if (isset($_GET['q']))
-<p>&nbsp;<i class="glyphicon glyphicon-search"></i> &nbsp; <i> Showing result for : <strong>{{ $_GET['q'] }}</strong></i> &bull; [ <a href="{{ url('/') }}">Clear</a>] </p>
+@if (Session::has('error'))
+<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
 @endif
 
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -49,7 +49,7 @@
                 <!-- edit button -->
                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
                 <!-- delete button -->
-                <a href="#" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                <a href="{{ url('superadmin/madmin/delete/'.$data->id) }}" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
 
               </div>
             </td>
@@ -78,11 +78,11 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left">
+            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="nama lengkap" required="required">
+                  <input type="text" id="name" class="form-control" placeholder="nama lengkap" required="required" name="name">
                 </div>
               </div>
 
@@ -97,7 +97,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="password" class="form-control" placeholder="password">
+                  <input type="password" id="password" class="form-control" placeholder="password" name="password">
                 </div>
               </div>
 
@@ -105,7 +105,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="x_content">
-                    <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage">
+                    <input type="file" id="foto" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" name="foto">
                     <br />
                   </div>
                 </div>
@@ -114,11 +114,13 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                  {{ csrf_field() }}
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                   <button type="reset" class="btn btn-primary">Reset</button>
                   <button type="submit" class="btn btn-success">Submit</button>
                 </div>
               </div>
+
             </form>
           </div>
         </div>

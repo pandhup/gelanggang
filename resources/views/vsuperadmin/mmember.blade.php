@@ -30,7 +30,7 @@
             <tr>
               <td>{{ $no++ }}</td>
               <td>{{ $data->nama_ukm }}</td>
-              <td>{{ $data->email }}/td>
+              <td>{{ $data->email }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="...">
                   <!-- veiw button -->
