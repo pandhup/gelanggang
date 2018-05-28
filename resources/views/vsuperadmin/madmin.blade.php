@@ -2,18 +2,6 @@
 
 @section('content')
 
-@if (Session::has('sukses_simpan'))
-<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Data has been saved.</div>
-@endif
-
-@if (Session::has('sukses_update'))
-<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Data has been updated.</div>
-@endif
-
-@if (Session::has('error'))
-<div class="alert alert-success" role="alert"><strong>Success</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
-@endif
-
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
@@ -65,7 +53,7 @@
 
 <!-- Modal Section -->
 {{-- CREATE MODAL --}}
-<div class="modal fade bs-create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-create-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -77,7 +65,10 @@
         {{-- modal content --}}
         <div class="x_panel">
           <div class="x_content">
+            <!-- error cek email -->
+            <div id="errorEmail" class="alert alert-error" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
+
             <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama</label>
@@ -117,7 +108,7 @@
                   {{ csrf_field() }}
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                   <button type="reset" class="btn btn-primary">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button id="btnSubmitModalMadmin" type="submit" class="btn btn-success" enabled >Submit</button>
                 </div>
               </div>
 

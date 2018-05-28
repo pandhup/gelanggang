@@ -13,6 +13,15 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('checkuser', function (Request $request) {
+    $user_check = \App\User::all()->Where('email', $request->email)->count();
+    if ($user_check > 0) {
+      return response()->json('Error');
+    } else {
+      return response()->json('Success');
+    }
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -50,6 +50,14 @@ class SuperadminController extends Controller
           return view('vsuperadmin.mmember') -> with('user',$user) -> with('ukm',$ukm);
       }
 
+      public function checkuser(Request $request)
+      {
+        $user_check = User::all()->Where('email', $request->email)->count();
+        if ($user_check > 0) {
+          return response()->json('Error');
+        }
+      }
+
       public function saveadmin(Request $request){
 
           $validator = Validator::make($request->all(), [
@@ -60,7 +68,7 @@ class SuperadminController extends Controller
 
           $user_check = User::all()->Where('email',Input::get('email'))->count();
           if ($user_check > 0) {
-            return back()->with('error','error');
+            return back();
           }else {
 
 

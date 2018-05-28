@@ -16,6 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 // akses logout
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -43,6 +45,7 @@ Route::group(['middleware' => ['web','auth']], function()
 Route::group(['prefix' => 'superadmin'], function()
 {
 	Route::group(['middleware' => ['web', 'auth', 'superadmin']], function () {
+    Route::get('/', function(){ return redirect('superadmin/home');});
     Route::get('home','SuperadminController@index');
 		Route::get('madmin','SuperadminController@madmin');
     Route::get('mmember','SuperadminController@mmember');
@@ -55,7 +58,8 @@ Route::group(['prefix' => 'superadmin'], function()
 //prefix untuk petugas admin
 Route::group(['prefix' => 'admin'], function()
 {
-	Route::group(['middleware' => ['web', 'auth', 'admin']], function () {
+	Route::group(['middleware' => ['web', 'auth', 'admin']], function () {Route::get('/', function(){ return redirect('superadmin/home');});
+    Route::get('/', function(){ return redirect('admin/home');});
     Route::get('home','AdminController@index');
 		Route::get('mmember','AdminController@mmember');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -72,6 +76,7 @@ Route::group(['prefix' => 'admin'], function()
 Route::group(['prefix' => 'member'], function()
 {
 	Route::group(['middleware' => ['web', 'auth', 'member']], function () {
+    Route::get('/', function(){ return redirect('member/home');});
 		Route::get('home','MemberController@index');
     Route::get('event','MemberController@event');
     Route::get('create','MemberController@create');
