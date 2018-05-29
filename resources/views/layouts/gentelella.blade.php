@@ -273,6 +273,7 @@
 
   <!-- Script Ajax -->
   <script src="{{asset('js/eventscript.js')}}"></script>
+  <script src="{{asset('js/admin.js')}}"></script>
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
