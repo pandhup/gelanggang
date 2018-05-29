@@ -51,7 +51,7 @@
                   <td><?php echo $key->status; ?></td>
                   <td>
                     <!-- <a href="#"><span class="label label-info"><i class="glyphicon-eye-close"></i>&nbsp;Lihat event</a> -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-detail-modal-lg">Detail</button>
                   </td>
                 </tr>
                 @endforeach
@@ -70,4 +70,89 @@
     </div>
   </div>
 </div>
+
+{{-- EDIT MODAL --}}
+<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title text-center" id="myModalLabel" ><i class="fa fa-pencil"></i> Edit Event</h4>
+      </div>
+      <div class="modal-body">
+        {{-- modal content --}}
+        <div class="x_panel">
+          <div class="x_content">
+            <br />
+            <form class="form-horizontal form-label-left">
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Event</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" placeholder="nama event" required="required">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" placeholder="lokasi" required="required">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <form class="form-horizontal">
+                    <fieldset>
+                      <div class="control-group">
+                        <div class="controls">
+                          <div class="input-prepend input-group">
+                            <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                            <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016" required="required" />
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi Event</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <textarea class="form-control" rows="3" placeholder='Type here'></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Kontak</label>
+                  <div class="col-md-6 col-sm-9 col-xs-12 form-group has-feedback">
+                    <input type="text" class="form-control has-feedback-left" id="inputSuccess5" placeholder="Phone" required="required">
+                    <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">File Poster</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="x_content">
+                      <form action="form_upload.html" class="dropzone"></form>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ln_solid"></div>
+                <div class="form-group">
+                  <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {{-- end modal content --}}
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
