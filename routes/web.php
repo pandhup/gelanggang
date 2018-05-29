@@ -80,7 +80,9 @@ Route::group(['prefix' => 'member'], function()
     Route::get('/', function(){ return redirect('member/home');});
 		Route::get('home','MemberController@index');
     Route::get('event','MemberController@event');
-    Route::get('event/{id_event}','MemberController@detail');
+    Route::post('event','MemberController@store');
+    Route::get('event/{id_event?}','MemberController@detail');
+    Route::put('event/{id_event}','MemberController@edit');
     Route::get('create','MemberController@create');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
