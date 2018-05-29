@@ -36,9 +36,13 @@ class MemberController extends Controller
     {
         return view('vmember.create');
     }
-    public function detail($event_id)
+    public function detail($id_event)
     {
+<<<<<<< HEAD
       $event = Event::find($event_id);
+=======
+      $event = Event::find($id_event);
+>>>>>>> 01b71f669c101d402af80d11ab664516b253dba0
       return response()->json($event);
     }
 }

@@ -36,7 +36,7 @@
               <td class="text-center">
                 <div class="btn-group" role="group" aria-label="...">
                   {{-- Button Detail --}}
-                  <button type="button" id="detail_popup" class="btn btn-sm btn-primary" data-toggle="modal" value="{{ $event->id_event }}"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  <button type="button" class="btn btn-sm btn-primary detail_popup" data-toggle="modal" value="{{ $event->id_event }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                   {{-- Button Edit --}}
                   <button type="button" class="btn btn-sm btn-warning edit_modal" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $event->id_event }}"><i class="glyphicon glyphicon-pencil"></i></button>
                   {{-- modal dibawah --}}

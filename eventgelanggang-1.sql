@@ -1,1 +1,0 @@
-﻿RENAME database siakademik to kuliah
