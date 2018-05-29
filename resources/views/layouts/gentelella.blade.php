@@ -180,6 +180,9 @@
     </div>
   </div>
 
+  <!-- Script Ajax -->
+  <script src="{{asset('js/eventscript.js')}}"></script>
+
   <!-- jQuery -->
   <script src="{{asset('/vendors/jquery/dist/jquery.min.js')}}"></script>
 
