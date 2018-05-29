@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event as Event;
 
 class MemberController extends Controller
 {
@@ -27,7 +28,9 @@ class MemberController extends Controller
     }
     public function event()
     {
-        return view('vmember.event');
+      $event = Event::all();
+      $no = 1;
+      return view('vmember.event',compact('event','no'));
     }
     public function create()
     {
