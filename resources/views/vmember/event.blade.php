@@ -26,22 +26,24 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="text-center">1</td>
-            <td>Web Gelanggang</td>
-            <td>1 Januari 2018</td>
-            <td>Gedung Gelanggang</td>
-            <td class="text-center">Berlangsung <span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>
-            <td class="text-center">
-              <div class="btn-group" role="group" aria-label="...">
-                {{-- Button M --}}
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
-                {{-- Button M --}}
-                <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
-                {{-- modal dibawah --}}
-              </div>
-            </td>
-          </tr>
+          @foreach ($event as $event)
+            <tr>
+              <td class="text-center">{{ $no++ }}</td>
+              <td>{{ $event->nama }}</td>
+              <td>{{ $event->tanggal_mulai }}</td>
+              <td>{{ $event->lokasi }}</td>
+              <td class="text-center">{{ $event->status }} <span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>
+              <td class="text-center">
+                <div class="btn-group" role="group" aria-label="...">
+                  {{-- Button M --}}
+                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-detail-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  {{-- Button M --}}
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
+                  {{-- modal dibawah --}}
+                </div>
+              </td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
 
@@ -135,7 +137,7 @@
 </div>
 
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
