@@ -182,6 +182,7 @@
 
   <!-- Script Ajax -->
   <script src="{{asset('js/eventscript.js')}}"></script>
+  <script src="{{asset('js/admin.js')}}"></script>
 
   <!-- jQuery -->
   <script src="{{asset('/vendors/jquery/dist/jquery.min.js')}}"></script>
