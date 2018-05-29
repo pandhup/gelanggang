@@ -3,8 +3,18 @@ $(document).ready(function(){
 
   $('.detail_popup').click(function() {
     var id_event = $(this).val();
+    var url = 'event';
+    $.get(url + '/' + id_event, function (data) {
+        //success data
+        console.log(data);
+        $('#nama_event_detail').val(data.nama);
+        $('#lokasi_detail').val(data.lokasi);
+        $('#tanggal_detail').val(data.tanggal_mulai);
+        $('#deskripsi_detail').val(data.deskripsi);
+        $('#kontak_detail').val(data.kontak);
+        $('#detail_modal').modal('show');
 
-    #.get('event' + '/' + id)
+    })
 
     // Menampilkan data ke detail modal
     // $.ajax({
