@@ -186,7 +186,7 @@
   <script type="text/javascript"> /*ini untuk ajax menampilkan error pada modal*/
         $( document ).ready(function() {
             $('#createModal').on('hidden.bs.modal', function(){
-               $(this).find(".modal-content").empty();
+               $(this).find(".modal-content").reset();
             });
             $('#errorEmail').hide();
 
