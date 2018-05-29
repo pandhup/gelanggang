@@ -50,12 +50,16 @@
                   <td><?php echo $key->kontak; ?></td>
                   <td><?php echo $key->status; ?></td>
                   <td>
-                    <!-- <a href="#"><span class="label label-info"><i class="glyphicon-eye-close"></i>&nbsp;Lihat event</a> -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-detail-modal-lg">Detail</button>
+                    <div class="btn-group" role="group" aria-label="...">
+                      {{-- Button Detail --}}
+                      <button type="button"  class="btn btn-sm btn-primary bebas" data-toggle="modal" value="{{ $key->nama }}"><i class="glyphicon glyphicon-eye-open"></i></button>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
               </tbody>
+
+
             </table>
           </div>
         </div>
@@ -71,8 +75,8 @@
   </div>
 </div>
 
-{{-- EDIT MODAL --}}
-<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+{{-- detail MODAL --}}
+<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id='modal_id'>
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -89,7 +93,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Event</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="nama event" required="required">
+                  <input type="text" class="form-control" placeholder="nama event" required="required" id='nama_member'>
                 </div>
               </div>
               <div class="form-group">

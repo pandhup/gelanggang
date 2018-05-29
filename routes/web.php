@@ -69,6 +69,8 @@ Route::group(['prefix' => 'admin'], function()
     Route::get('berakhir', 'EventController@berakhir');
     Route::get('tolak', 'EventController@tolak');
     Route::get('batal', 'EventController@batal');
+    Route::get('antrian/{modal_id?}', 'EventController@aksi');
+
 	});
 });
 

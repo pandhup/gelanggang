@@ -28,7 +28,7 @@ class EventController extends Controller
         ->join('users','event.id_user_member','=','users.id')
         ->join('ukm','users.id_ukm','=','ukm.id_ukm')
         ->where('status','=','belumverif')
-        ->select('event.*','ukm.nama_ukm')
+        ->select('event.*','ukm.nama_ukm','users.id')
         ->get();
         $no = 1;
         return view('vadmin.antrian')
@@ -89,5 +89,15 @@ class EventController extends Controller
       return view('vadmin.batal')
       ->with('event',$event)
       ->with('no',$no);
+    }
+    public function aksi($modal_id)
+    {
+      $event = DB::table('event')
+      ->join('users','event.id_user_member','=','users.id')
+      ->join('ukm','users.id_ukm','=','ukm.id_ukm')
+      ->where('nama','=',$modal_id)
+      ->select('event.*','ukm.nama_ukm','users.id')
+      ->get();
+      return response()->json($event);
     }
 }
