@@ -38,7 +38,7 @@ class MemberController extends Controller
     }
     public function detail($event_id)
     {
-      $event = Product::find($event_id);
+      $event = Event::find($event_id);
       return response()->json($event);
     }
 }
