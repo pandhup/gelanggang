@@ -35,10 +35,10 @@
               <td class="text-center">{{ $event->status }} <span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>
               <td class="text-center">
                 <div class="btn-group" role="group" aria-label="...">
-                  {{-- Button M --}}
-                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-detail-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
-                  {{-- Button M --}}
-                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
+                  {{-- Button Detail --}}
+                  <button type="button" id="detail_popup" class="btn btn-sm btn-primary" data-toggle="modal" value="{{ $event->id_event }}"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  {{-- Button Edit --}}
+                  <button type="button" class="btn btn-sm btn-warning edit_modal" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $event->id_event }}"><i class="glyphicon glyphicon-pencil"></i></button>
                   {{-- modal dibawah --}}
                 </div>
               </td>
@@ -88,7 +88,7 @@
                         <div class="controls">
                           <div class="input-prepend input-group">
                             <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                            <input type="text" style="width: 200px" name="reservation" id="reservation" class="form-control" value="01/01/2016 - 01/25/2016" required="required" />
+                            <input type="text" style="width: 200px" name="reservation" id="input_tanggal" class="form-control" value="01/01/2016 - 01/25/2016" required="required" />
                           </div>
                         </div>
                       </div>
@@ -104,7 +104,7 @@
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Kontak</label>
                   <div class="col-md-6 col-sm-9 col-xs-12 form-group has-feedback">
-                    <input type="text" class="form-control has-feedback-left" id="inputSuccess5" placeholder="Phone" required="required">
+                    <input type="text" class="form-control has-feedback-left" id="inputkontak" placeholder="Phone" required="required">
                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                   </div>
                 </div>
@@ -137,7 +137,7 @@
 </div>
 
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-detail-modal-lg" id="detail_modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -160,31 +160,31 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Event</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly="readonly">
+                  <input type="text" class="form-control" required="required" readonly="readonly" id="nama_event_detail">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly="readonly">
+                  <input type="text" class="form-control" required="required" readonly="readonly" id="lokasi_detail">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal</label>
                 <div class="col-md-9 col-sm-9 col-xs-12 form-group has-feedback">
-                  <input type="text" class="form-control has-feedback-left" id="inputSuccess5"  required="required" readonly="readonly">
+                  <input type="text" class="form-control has-feedback-left" id="tanggal_detail"  required="required" readonly="readonly">
                   <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi Event</label>
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <textarea class="form-control" rows="3"  readonly="readonly"></textarea>
+                    <textarea class="form-control" rows="3"  readonly="readonly" id="deskripsi_detail"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Kontak</label>
                   <div class="col-md-6 col-sm-9 col-xs-12 form-group has-feedback">
-                    <input type="text" class="form-control has-feedback-left" id="inputSuccess5" required="required" readonly="readonly">
+                    <input type="text" class="form-control has-feedback-left" id="kontak_detail" required="required" readonly="readonly">
                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
                   </div>
                 </div>

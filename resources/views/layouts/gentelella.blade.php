@@ -180,8 +180,7 @@
     </div>
   </div>
 
-  <!-- Script Ajax -->
-  <script src="{{asset('js/eventscript.js')}}"></script>
+
 
   <!-- jQuery -->
   <script src="{{asset('/vendors/jquery/dist/jquery.min.js')}}"></script>
@@ -271,6 +270,9 @@
   <script src="{{asset('/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
   <!-- Dropzone.js -->
   <script src="{{asset('/vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
+
+  <!-- Script Ajax -->
+  <script src="{{asset('js/eventscript.js')}}"></script>
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
