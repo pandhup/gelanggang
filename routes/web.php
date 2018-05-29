@@ -50,6 +50,7 @@ Route::group(['prefix' => 'superadmin'], function()
 		Route::get('madmin','SuperadminController@madmin');
     Route::get('mmember','SuperadminController@mmember');
     Route::post('madmin/saveadmin','SuperadminController@saveadmin');
+    Route::get('detailadmin/{id}','SuperadminController@detailadmin');
     Route::get('madmin/delete/{id}','SuperadminController@deleteadmin');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});

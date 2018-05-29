@@ -185,38 +185,6 @@
   <!-- jQuery -->
   <script src="{{asset('/vendors/jquery/dist/jquery.min.js')}}"></script>
 
-  <script type="text/javascript"> /*ini untuk ajax menampilkan error pada modal*/
-        $( document ).ready(function() {
-            $('#createModal').on('hidden.bs.modal', function(){
-               $(this).find(".modal-content").reset();
-            });
-            $('#errorEmail').hide();
-
-          $('#email').change(function(){
-
-              var emailText = $(this).val();
-
-              $.ajax({
-                  url : '/api/checkuser/',
-                  type:'get',
-                  data: { email: emailText },
-                  dataType: 'json',
-                  success: function(response) {
-                      if(response == "Error") {
-                          $('#errorEmail').show();
-                          $('#btnSubmitModalMadmin').prop('disabled',true);
-                          console.log('error');
-                      } else {
-                          $('#errorEmail').hide();
-                          $('#btnSubmitModalMadmin').prop('disabled',false);
-                          console.log('success');
-                      }
-                  }
-              });
-          });
-        });
-
-  </script>
   <!-- Bootstrap -->
   <script src="{{asset('/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <!-- FastClick -->
@@ -274,6 +242,7 @@
   <!-- Script Ajax -->
   <script src="{{asset('js/eventscript.js')}}"></script>
   <script src="{{asset('js/admin.js')}}"></script>
+  <script src="{{asset('js/superadmin.js')}}"></script>
 
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
