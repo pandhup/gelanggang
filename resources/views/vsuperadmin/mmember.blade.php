@@ -51,7 +51,7 @@
 </div>
 
 {{-- CREATE MODAL --}}
-<div class="modal fade bs-create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-create-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -63,7 +63,10 @@
         {{-- modal content --}}
         <div class="x_panel">
           <div class="x_content">
+            <!-- error cek email -->
+            <div id="errorEmail" class="alert alert-error" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
+
             <form class="form-horizontal form-label-left">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
@@ -107,7 +110,7 @@
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                   <button type="reset" class="btn btn-primary">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
+                  <button id="btnSubmitModalMadmin" type="submit" class="btn btn-success">Submit</button>
                 </div>
               </div>
             </form>

@@ -33,7 +33,7 @@
             <td>
               <div class="btn-group" role="group" aria-label="...">
                 <!-- view button -->
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
+                <button type="button" class="btn btn-sm btn-primary detail_admin" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                 <!-- edit button -->
                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
                 <!-- delete button -->
@@ -122,7 +122,7 @@
 </div>
 
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -148,21 +148,21 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"> ID Admin </label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly>
+                  <input type="text" class="form-control" id="id" required="required" readonly>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Lengkap</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly="readonly">
+                  <input type="text" class="form-control" id="nama" required="required" readonly="readonly">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
+                  <input type="email" id="email_admin" class="form-control has-feedback-left" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>
