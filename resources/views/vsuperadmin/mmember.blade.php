@@ -51,7 +51,7 @@
 </div>
 
 {{-- CREATE MODAL --}}
-<div class="modal fade bs-create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-create-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
