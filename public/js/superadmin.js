@@ -45,3 +45,19 @@ $(document).ready(function() {
         })
     });
 });
+
+$(document).ready(function() {
+
+    //display modal form for task editing
+    $('.edit_admin').click(function(){
+        var users_id = $(this).val();
+        var url = 'editadmin';
+        $.get(url + '/' + users_id, function (data) {
+            //success data
+            console.log(data);
+            $('#nama_edit').val(data.name);
+            $('#email_edit').val(data.email);
+
+        })
+    });
+});

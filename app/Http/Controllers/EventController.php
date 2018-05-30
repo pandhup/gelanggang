@@ -24,11 +24,11 @@ class EventController extends Controller
      */
     public function antrian()
     {
-        $event = DB::table('event')
-        ->join('users','event.id_user_member','=','users.id')
+        $event = DB::table('events')
+        ->join('users','events.id_user_member','=','users.id')
         ->join('ukm','users.id_ukm','=','ukm.id_ukm')
         ->where('status','=','belumverif')
-        ->select('event.*','ukm.nama_ukm')
+        ->select('events.*','ukm.nama_ukm')
         ->get();
         $no = 1;
         return view('vadmin.antrian')
@@ -37,9 +37,9 @@ class EventController extends Controller
     }
     public function revisi()
     {
-      $event = DB::table('event')
+      $event = DB::table('events')
       ->where('status','=','direvisi')
-      ->select('event.*')
+      ->select('events.*')
       ->get();
       $no = 1;
       return view('vadmin.revisi')
@@ -48,9 +48,9 @@ class EventController extends Controller
     }
     public function berakhir()
     {
-      $event = DB::table('event')
+      $event = DB::table('events')
       ->where('status','=','selesai')
-      ->select('event.*')
+      ->select('events.*')
       ->get();
       $no = 1;
       return view('vadmin.berakhir')
@@ -59,9 +59,9 @@ class EventController extends Controller
     }
     public function berlangsung()
     {
-      $event = DB::table('event')
+      $event = DB::table('events')
       ->where('status','=','berlangsung')
-      ->select('event.*')
+      ->select('events.*')
       ->get();
       $no = 1;
       return view('vadmin.berlangsung')
@@ -70,9 +70,9 @@ class EventController extends Controller
     }
     public function tolak()
     {
-      $event = DB::table('event')
+      $event = DB::table('events')
       ->where('status','=','ditolak')
-      ->select('event.*')
+      ->select('events.*')
       ->get();
       $no = 1;
       return view('vadmin.tolak')
@@ -81,9 +81,9 @@ class EventController extends Controller
     }
     public function batal()
     {
-      $event = DB::table('event')
+      $event = DB::table('events')
       ->where('status','=','dibatalkan')
-      ->select('event.*')
+      ->select('events.*')
       ->get();
       $no = 1;
       return view('vadmin.batal')

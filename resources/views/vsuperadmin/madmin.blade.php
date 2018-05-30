@@ -35,7 +35,7 @@
                 <!-- view button -->
                 <button type="button" class="btn btn-sm btn-primary detail_admin" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                 <!-- edit button -->
-                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-sm btn-primary edit_admin" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                 <!-- delete button -->
                 <a href="{{ url('superadmin/madmin/delete/'.$data->id) }}" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
 
@@ -122,7 +122,7 @@
 </div>
 
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-example-modal-lg" id="detailModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -191,18 +191,18 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left">
+            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/updateadmin') }}">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Lengkap</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" placeholder="nama event" required="required">
+                  <input type="text" class="form-control" id="nama_edit" required="required">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required />
+                  <input type="email" id="email_edit" class="form-control has-feedback-left" name="email" data-parsley-trigger="change" required />
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>
