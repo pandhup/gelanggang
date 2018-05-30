@@ -5,6 +5,7 @@ $(document).ready(function(){
   $('.detail_popup').click(function() {
     var id_event = $(this).val();
     var url = 'event';
+    var poster ;
     $.get(url + '/' + id_event, function (data) {
         //success data
         console.log(data);
@@ -15,8 +16,10 @@ $(document).ready(function(){
           $('.tanggal_selesai_detail').val(o.tanggal_selesai);
           $('.deskripsi_detail').val(o.deskripsi);
           $('.kontak_detail').val(o.kontak);
+          poster = '<h2 id="namaPoster">'+o.nama_poster+'</h2>';
         });
-    })
+        $("#namaPoster").replaceWith(poster);
+    });
   });
 
 // EDIT MODAL - NOT FIX

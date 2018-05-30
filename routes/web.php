@@ -82,7 +82,10 @@ Route::group(['prefix' => 'member'], function()
     Route::get('event','MemberController@event');
     Route::post('event','MemberController@store');
     Route::get('event/{id_event?}','MemberController@detail');
-    Route::put('event/{id_event}','MemberController@edit');
+    Route::put('event/{id_event}',[
+      'uses' => 'MemberController@edit',
+      'as' => 'event.update',
+    ]);
     Route::get('create','MemberController@create');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\Event as Event;
+use App\Models\Poster as Poster;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -34,10 +36,13 @@ class MemberController extends Controller
     public function event()
     {
       $id_login = Auth::user()->id;
-      $events = Event::all()
-      ->where('id_user_member','=',$id_login);
+      $event = DB::table('events')
+      ->join('poster','events.id_event','=','poster.id_event')
+      ->where('events.id_user_member','=',$id_login)
+      ->select('events.*','poster.nama_poster')
+      ->get();
 
-      return view('vmember.event', ['event'=>$events]);
+      return view('vmember.event', ['event'=>$event]);
     }
 
     public function create()
@@ -47,8 +52,11 @@ class MemberController extends Controller
 
     public function detail($id)
     {
-      $event = Event::all()
-      ->where('id_event','=',$id);
+      $event = DB::table('events')
+      ->join('poster','events.id_event','=','poster.id_event')
+      ->where('events.id_event','=',$id)
+      ->select('events.*','poster.nama_poster')
+      ->get();
       return response()->json($event);
     }
 
@@ -56,17 +64,7 @@ class MemberController extends Controller
     {
         $event = Event::all()
         ->where('id_event','=',$id);
-
-        // $event->nama = $request->nama;
-        // $event->tanggal_mulai = $request->tanggal_mulai;
-        // $event->tanggal_selesai = $request->tanggal_selesai;
-        // $event->deskripsi = $request->deskripsi;
-        // $event->lokasi = $request->lokasi;
-        // $event->kontak = $request->kontak;
-        // $event->status = $request->status;
-        // $event->id_user_member = $request->id_user_member;
         $event = $event->update($request->all());
-        // $event->save();
         return response()->json($event);
     }
 

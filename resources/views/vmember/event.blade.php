@@ -157,7 +157,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <h2>Poster</h2>
+                  <h2 id="namaPoster">Poster</h2>
                 </div>
               </div>
               <div class="form-group">
