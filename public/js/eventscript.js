@@ -116,12 +116,12 @@ $(document).ready(function(){
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            event_data = '<tr id="event'+ data.id_event +'">';
-            event_data = '<td>'+ data.nama +'</td><td>'+ data.tanggal_mulai +'</td><td>'+ data.lokasi +'</td><td class="text-center">'+ data.status +'<span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>';
-            event_data += '<button type="button" class="btn btn-sm btn-primary detail_popup" data-toggle="modal" data-target=".bs-detail-modal-lg" value="' + data.id_event + '"><i class="glyphicon glyphicon-eye-open"></i></button>';
-            event_data += '<button type="button" class="btn btn-sm btn-warning edit_modal" data-toggle="modal" data-target=".bs-edit-modal-lg" value="' + data.id_event + '"><i class="glyphicon glyphicon-pencil"></i></button>';
-
-            $('#eventList').append(event_data);
+            // event_data = '<tr id="event'+ data.id_event +'">';
+            // event_data = '<td>'+ data.nama +'</td><td>'+ data.tanggal_mulai +'</td><td>'+ data.lokasi +'</td><td class="text-center">'+ data.status +'<span class="glyphicon glyphicon-ok" style="color:#00FF00;"></span></td>';
+            // event_data += '<button type="button" class="btn btn-sm btn-primary detail_popup" data-toggle="modal" data-target=".bs-detail-modal-lg" value="' + data.id_event + '"><i class="glyphicon glyphicon-eye-open"></i></button>';
+            // event_data += '<button type="button" class="btn btn-sm btn-warning edit_modal" data-toggle="modal" data-target=".bs-edit-modal-lg" value="' + data.id_event + '"><i class="glyphicon glyphicon-pencil"></i></button>';
+            //
+            // $('#eventList').append(event_data);
             $('#createEventModal').modal('hide');
         },
         error: function (data) {
