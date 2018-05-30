@@ -116,6 +116,26 @@ public function detailadmin($id)
     return view('vsuperadmin.mmember') -> with('member',$member) -> with('ukm',$ukm);
   }
 
+  public function savemember()
+  {
+    $validator = Validator::make($request->all(), [
+      'name' => 'required|string|max:255',
+      'email' => 'required|string|email|unique:users',
+      'password' => 'required|string|min:6|confirmed',
+    ]);
+
+    $member = new User;
+    // $data->nama_field_di_database = Input::get('nama_field_di_form');
+    $member->name = Input::get('nama_ukm');
+    $member->email = Input::get('email');
+    $member->id_ukm = Input::get('id_ukm');
+    $member->password = bcrypt(Input::get('password'));
+    $member->role = 'member';
+
+    $member->save();
+
+    return redirect('superadmin/mmember');
+  }
 
   public function detailmember($id)
   {
@@ -125,7 +145,17 @@ public function detailadmin($id)
     -> where('id','=',$id)
     -> select('users.*','ukm.*')
     -> get();
-    return response()->json($member);
+
+    $array = [];
+    foreach ($member as $data) {
+      $array[] = [
+       'id'=> $data->id,
+       'email_member'=> $data->email,
+       'id_ukm'=> $data->id_ukm,
+       'nama_ukm'=> $data->nama_ukm,
+     ];
+    }
+    return response()->json($array);
   }
 
 
