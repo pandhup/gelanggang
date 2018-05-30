@@ -47,13 +47,20 @@ Route::group(['prefix' => 'superadmin'], function()
 	Route::group(['middleware' => ['web', 'auth', 'superadmin']], function () {
     Route::get('/', function(){ return redirect('superadmin/home');});
     Route::get('home','SuperadminController@index');
+    // Route untuk admin
 		Route::get('madmin','SuperadminController@madmin');
-    Route::get('mmember','SuperadminController@mmember');
     Route::post('madmin/saveadmin','SuperadminController@saveadmin');
     Route::get('detailadmin/{id}','SuperadminController@detailadmin');
     Route::get('editadmin/{id}','SuperadminController@detailadmin');
     Route::post('updateadmin/{id}','SuperadminController@updateadmin');
     Route::get('madmin/delete/{id}','SuperadminController@deleteadmin');
+    // Route untuk member
+    Route::get('mmember','SuperadminController@mmember');
+    Route::post('mmember/saveadmin','SuperadminController@savemember');
+    Route::get('detailamember/{id}','SuperadminController@detailmember');
+    Route::get('editmember/{id}','SuperadminController@detailmember');
+    Route::post('updatemember/{id}','SuperadminController@updatemember');
+    Route::get('mmember/delete/{id}','SuperadminController@deletemember');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });

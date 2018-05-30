@@ -47,8 +47,8 @@ class SuperadminController extends Controller
   // menampilkan daftar admin
   public function madmin()
   {
-    $user = User::all()->where('role','=','admin');
-    return view('vsuperadmin.madmin', ['user' => $user]);
+    $admin = User::all()->where('role','=','admin');
+    return view('vsuperadmin.madmin', ['admin' => $admin]);
   }
 
 // fungsiuntuk menambah admin baru
@@ -87,26 +87,25 @@ class SuperadminController extends Controller
 
 public function detailadmin($id)
 {
-  $user = User::find($id);
-  return response()->json($user);
+  $admin = User::find($id);
+  return response()->json($admin);
 }
 
-  // fungsi untuk menghapus admin
+  // fungsi untuk menghapus user
   public function deleteadmin($id)
   {
-
     $data = User::find($id);
     $data -> delete($id);
     return redirect('superadmin/madmin')->with('sukses_delete', 'yes');
   }
-
+// Batas Kelompok
 
 // Kelompok fungsi untuk Member
 
 // menampilkan daftar member
   public function mmember()
   {
-    $user = DB::table('users')
+    $member = DB::table('users')
     -> join('ukm','users.id_ukm','=','ukm.id_ukm')
     -> where('role','=','member')
     -> select('ukm.*','users.*')
@@ -114,10 +113,23 @@ public function detailadmin($id)
 
     $ukm = DB::table('ukm')->select('id_ukm','nama_ukm')->orderBy('nama_ukm','asc')->get();
 
-    return view('vsuperadmin.mmember') -> with('user',$user) -> with('ukm',$ukm);
+    return view('vsuperadmin.mmember') -> with('member',$member) -> with('ukm',$ukm);
   }
 
-// fungsi untuk menghapus member
+
+  public function detailmember($id)
+  {
+    // $member = User::find($id);
+    $member = DB::table('users')
+    -> join('ukm','users.id_ukm','=','ukm.id_ukm')
+    -> where('id','=',$id)
+    -> select('users.*','ukm.*')
+    -> get();
+    return response()->json($member);
+  }
+
+
+  // fungsi untuk menghapus member
   public function deletemember($id)
   {
 
@@ -125,6 +137,6 @@ public function detailadmin($id)
     $data -> delete($id);
     return redirect('superadmin/mmember')->with('sukses_delete', 'yes');
   }
-
+//Batas Kelompok
 
 }

@@ -25,7 +25,7 @@
         </thead>
         <tbody>
           <?php $no=1;  ?>
-          @foreach($user as $data)
+          @foreach($admin as $data)
           <tr>
             <td>{{ $no++ }}</td>
             <td>{{ $data->name }}</td>
@@ -53,7 +53,7 @@
 
 <!-- Modal Section -->
 {{-- CREATE MODAL --}}
-<div class="modal fade bs-create-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-create-modal-lg createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -66,7 +66,7 @@
         <div class="x_panel">
           <div class="x_content">
             <!-- error cek email -->
-            <div id="errorEmail" class="alert alert-error" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
+            <div id="errorEmail" class="alert alert-error errorEmail" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
 
             <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}">
@@ -80,7 +80,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required />
+                  <input type="email" id="email" class="form-control has-feedback-left email" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required />
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>

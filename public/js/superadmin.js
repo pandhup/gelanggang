@@ -1,9 +1,9 @@
-
+// Menampilkan pesan error apabila ada error pada saat validasi email
 $( document ).ready(function() {
-  $('#createModal').on('hidden.bs.modal', function(){
+  $('.createModal').on('hidden.bs.modal', function(){
     $(this).find(".modal-content").reset();
   });
-  $('#errorEmail').hide();
+  $('.errorEmail').hide();
 
   $('#email').change(function(){
 
@@ -16,11 +16,11 @@ $( document ).ready(function() {
       dataType: 'json',
       success: function(response) {
         if(response == "Error") {
-          $('#errorEmail').show();
+          $('.errorEmail').show();
           $('#btnSubmitModalMadmin').prop('disabled',true);
           console.log('error');
         } else {
-          $('#errorEmail').hide();
+          $('.errorEmail').hide();
           $('#btnSubmitModalMadmin').prop('disabled',false);
           console.log('success');
         }
@@ -29,9 +29,9 @@ $( document ).ready(function() {
   });
 });
 
+/* Kelompok javascript untuk admin */
+// menampilkan detail user di modal detail
 $(document).ready(function() {
-
-    //display modal form for task editing
     $('.detail_admin').click(function(){
         var users_id = $(this).val();
         var url = 'detailadmin';
@@ -46,9 +46,9 @@ $(document).ready(function() {
     });
 });
 
+// menampilkan detail user di modal Edit
 $(document).ready(function() {
 
-    //display modal form for task editing
     $('.edit_admin').click(function(){
         var users_id = $(this).val();
         var url = 'editadmin';
@@ -61,3 +61,39 @@ $(document).ready(function() {
         })
     });
 });
+/* batasan Kelompok */
+
+/* Kelompok javascript untuk admin */
+// menampilkan detail user di modal detail
+$(document).ready(function() {
+    $('.detail_member').click(function(){
+        var users_id = $(this).val();
+        var url = 'detailadmin';
+        $.get(url + '/' + users_id, function (data) {
+            //success data
+            console.log(data);
+            $('#id').val(data.id);
+            $('#nama_ukm').val(data.nama_ukm);
+            $('#id_ukm').val(data.id_ukm);
+            $('#email_member').val(data.email);
+
+        })
+    });
+});
+
+// menampilkan detail user di modal Edit
+$(document).ready(function() {
+
+    $('.edit_user').click(function(){
+        var users_id = $(this).val();
+        var url = 'editadmin';
+        $.get(url + '/' + users_id, function (data) {
+            //success data
+            console.log(data);
+            $('#nama_edit').val(data.name);
+            $('#email_edit').val(data.email);
+
+        })
+    });
+});
+/* batasan Kelompok */

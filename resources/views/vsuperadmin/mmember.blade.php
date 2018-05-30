@@ -26,7 +26,7 @@
 
           <tbody>
             <?php $no=1;  ?>
-            @foreach($user as $data)
+            @foreach($member as $data)
             <tr>
               <td>{{ $no++ }}</td>
               <td>{{ $data->nama_ukm }}</td>
@@ -34,9 +34,9 @@
               <td>
                 <div class="btn-group" role="group" aria-label="...">
                   <!-- veiw button -->
-                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  <button type="button" class="btn btn-sm btn-primary detail_member" data-toggle="modal" data-target=".bs-detail-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                   <!-- edit button -->
-                  <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example1-modal-lg"><i class="glyphicon glyphicon-pencil"></i></button>
+                  <button type="button" class="btn btn-sm btn-primary edit_member" data-toggle="modal" data-target=".bs-edit-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                   <!-- delete button -->
                   <a href="#" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                 </div>
@@ -51,7 +51,7 @@
 </div>
 
 {{-- CREATE MODAL --}}
-<div class="modal fade bs-create-modal-lg" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-create-modal-lg createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -64,7 +64,7 @@
         <div class="x_panel">
           <div class="x_content">
             <!-- error cek email -->
-            <div id="errorEmail" class="alert alert-error" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
+            <div id="errorEmail" class="alert alert-error errorEmail" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
 
             <form class="form-horizontal form-label-left">
@@ -75,6 +75,7 @@
                     <option>Pilih UKM</option>
                     @foreach ($ukm as $data)
                     <option>{{ $data->nama_ukm }}</option>
+                    {{$data->id_ukm }}
                     @endforeach
                   </select>
                 </div>
@@ -124,7 +125,7 @@
 
 <!-- Modal Section -->
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -151,29 +152,29 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">ID Member</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly="readonly">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">ID UKM </label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" required="required" readonly>
+                  <input type="text" id="id" class="form-control" required="required" readonly>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
+                  <input type="email" id="email_member" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">ID UKM </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" id="id_ukm" required="required" readonly>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" id="nama_ukm" required="required" readonly="readonly">
                 </div>
               </div>
 
@@ -188,7 +189,7 @@
 </div>
 
 {{-- EDIT MODAL --}}
-<div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-edit-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
