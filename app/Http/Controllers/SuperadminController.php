@@ -6,6 +6,7 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use App\Models\User as User;
 use App\Models\Ukm as Ukm;
 
@@ -70,6 +71,10 @@ class SuperadminController extends Controller
     //         ->withErrors($validator)
     //         ->withInput();
     // }
+    // script upload gambar
+    $file = $request->file('foto');
+    $fileName = $file->getClientOriginalName();
+    $request->file('foto')->storeAs('public/images', $fileName);
 
     $admin = new User;
 
@@ -78,8 +83,10 @@ class SuperadminController extends Controller
     $admin->email = Input::get('email');
     $admin->password = bcrypt(Input::get('password'));
     $admin->role = 'admin';
+    $admin->foto = $fileName;
 
     $admin->save();
+
 
     return redirect('superadmin/madmin');
   }
@@ -95,7 +102,10 @@ public function detailadmin($id)
   public function deleteadmin($id)
   {
     $data = User::find($id);
+    $foto = $data->foto;
+    Storage::disk('public')->delete('images/'.$foto);
     $data -> delete($id);
+
     return redirect('superadmin/madmin')->with('sukses_delete', 'yes');
   }
 // Batas Kelompok

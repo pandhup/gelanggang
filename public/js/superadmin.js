@@ -32,12 +32,16 @@ $( document ).ready(function() {
 /* Kelompok javascript untuk admin */
 // menampilkan detail user di modal detail
 $(document).ready(function() {
+  $('.createModal').on('hidden.bs.modal', function(){
+    $(this).find(".modal-content").reset();
+  });
     $('.detail_admin').click(function(){
         var users_id = $(this).val();
         var url = 'detailadmin';
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);
+            $('#foto').val(data.foto)
             $('#id').val(data.id);
             $('#nama').val(data.name);
             $('#email_admin').val(data.email);

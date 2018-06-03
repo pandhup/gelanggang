@@ -69,7 +69,7 @@
             <div id="errorEmail" class="alert alert-error errorEmail" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
 
-            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}">
+            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}" enctype="multipart/form-data">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -96,7 +96,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="x_content">
-                    <input type="file" id="foto" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" name="foto">
+                    <input type="file" id="foto" name="foto" >
                     <br />
                   </div>
                 </div>
@@ -135,12 +135,17 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
+            <!-- gambar -->
             <form class="form-horizontal form-label-left">
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="img-preview preview-lg">
-                    <img src="{{asset('images/img.jpg')}}">
+                    @if($data->foto != "")
+                    <img src=" {{asset('storage/images/'.$data->foto)}}">
+                    @else
+                    <img src=" {{asset('images/img.jpg')}}">
+                    @endif
                   </div>
                 </div>
               </div>
