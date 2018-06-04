@@ -13,8 +13,8 @@
       <div class="clearfix"></div>
 
       <div class="x_content">
-      </br>
-      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+        </br>
+        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>No.</th>
@@ -38,17 +38,15 @@
                 <button type="button" class="btn btn-sm btn-primary edit_admin" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                 <!-- delete button -->
                 <a href="{{ url('superadmin/madmin/delete/'.$data->id) }}" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-
               </div>
             </td>
           </tr>
           @endforeach
         </tbody>
       </table>
-
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- Modal Section -->
@@ -70,6 +68,7 @@
             <br />
 
             <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/saveadmin') }}" enctype="multipart/form-data">
+              {{ csrf_field() }}
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
@@ -105,7 +104,6 @@
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                  {{ csrf_field() }}
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                   <button type="reset" class="btn btn-primary">Reset</button>
                   <button id="btnSubmitModalMadmin" type="submit" class="btn btn-success" enabled >Submit</button>
@@ -137,14 +135,13 @@
             <br />
             <!-- gambar -->
             <form class="form-horizontal form-label-left">
+
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="img-preview preview-lg">
                     @if($data->foto != "")
-                    <img src=" {{asset('storage/images/'.$data->foto)}}">
-                    @else
-                    <img src=" {{asset('images/img.jpg')}}">
+                    <img src="{{asset('images/img.jpg')}}">
                     @endif
                   </div>
                 </div>

@@ -41,11 +41,10 @@ $(document).ready(function() {
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);
-            $('#foto').val(data.foto)
+            // $('#foto').val(data.foto)
             $('#id').val(data.id);
             $('#nama').val(data.name);
             $('#email_admin').val(data.email);
-
         })
     });
 });
@@ -72,13 +71,12 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('.detail_member').click(function(){
         var users_id = $(this).val();
-        var url = 'detailadmin';
+        var url = 'detailmember';
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);
-            $('#id').val(data.id);
-            $('#nama_ukm').val(data.nama_ukm);
-            $('#id_ukm').val(data.id_ukm);
+            $('#id_member').val(data.id);
+            $('#nama_ukm').val(data.name);
             $('#email_member').val(data.email);
 
         })
@@ -88,9 +86,9 @@ $(document).ready(function() {
 // menampilkan detail user di modal Edit
 $(document).ready(function() {
 
-    $('.edit_user').click(function(){
+    $('.edit_member').click(function(){
         var users_id = $(this).val();
-        var url = 'editadmin';
+        var url = 'editmember';
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);

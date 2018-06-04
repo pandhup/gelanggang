@@ -58,6 +58,7 @@ class SuperadminController extends Controller
       'name' => 'required|string|max:255',
       'email' => 'required|string|email|unique:users',
       'password' => 'required|string|min:6|confirmed',
+      'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
     ]);
 
     // $user_check = User::all()->Where('email',Input::get('email'))->count();
@@ -66,11 +67,10 @@ class SuperadminController extends Controller
     // }else {
 
 
-    // if ($validator->fails()) {
-    //     return redirect('superadmin/madmin')
-    //         ->withErrors($validator)
-    //         ->withInput();
-    // }
+    if ($validator->fails()) {
+        return redirect('superadmin/madmin')
+            ->withErrors($validator);
+    }
     // script upload gambar
     $file = $request->file('foto');
     $fileName = $file->getClientOriginalName();
@@ -116,9 +116,8 @@ public function detailadmin($id)
   public function mmember()
   {
     $member = DB::table('users')
-    -> join('ukm','users.id_ukm','=','ukm.id_ukm')
     -> where('role','=','member')
-    -> select('ukm.*','users.*')
+    -> select('*')
     -> get();
 
     $ukm = DB::table('ukm')->select('id_ukm','nama_ukm')->orderBy('nama_ukm','asc')->get();
@@ -126,7 +125,7 @@ public function detailadmin($id)
     return view('vsuperadmin.mmember') -> with('member',$member) -> with('ukm',$ukm);
   }
 
-  public function savemember()
+  public function savemember( Request $request)
   {
     $validator = Validator::make($request->all(), [
       'name' => 'required|string|max:255',
@@ -134,11 +133,15 @@ public function detailadmin($id)
       'password' => 'required|string|min:6|confirmed',
     ]);
 
+    if ($validator->fails()) {
+        return redirect('superadmin/madmin')
+            ->withErrors($validator);
+    }
+
     $member = new User;
     // $data->nama_field_di_database = Input::get('nama_field_di_form');
     $member->name = Input::get('nama_ukm');
     $member->email = Input::get('email');
-    $member->id_ukm = Input::get('id_ukm');
     $member->password = bcrypt(Input::get('password'));
     $member->role = 'member';
 
@@ -149,23 +152,8 @@ public function detailadmin($id)
 
   public function detailmember($id)
   {
-    // $member = User::find($id);
-    $member = DB::table('users')
-    -> join('ukm','users.id_ukm','=','ukm.id_ukm')
-    -> where('id','=',$id)
-    -> select('users.*','ukm.*')
-    -> get();
-
-    $array = [];
-    foreach ($member as $data) {
-      $array[] = [
-       'id'=> $data->id,
-       'email_member'=> $data->email,
-       'id_ukm'=> $data->id_ukm,
-       'nama_ukm'=> $data->nama_ukm,
-     ];
-    }
-    return response()->json($array);
+    $member = User::find($id);
+    return response()->json($member);
   }
 
 

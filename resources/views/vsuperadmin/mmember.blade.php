@@ -29,7 +29,7 @@
             @foreach($member as $data)
             <tr>
               <td>{{ $no++ }}</td>
-              <td>{{ $data->nama_ukm }}</td>
+              <td>{{ $data->name }}</td>
               <td>{{ $data->email }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="...">
@@ -67,16 +67,16 @@
             <div id="errorEmail" class="alert alert-error errorEmail" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
 
-            <form class="form-horizontal form-label-left">
+            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/mmember/savemember') }}" enctype="multipart/form-data">
+              {{ csrf_field() }}
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <select class="form-control">
-                    <option>Pilih UKM</option>
-                    @foreach ($ukm as $data)
-                    <option>{{ $data->nama_ukm }}</option>
-                    {{$data->id_ukm }}
-                    @endforeach
+                  <select class="form-control" id="nama_ukm" name="nama_ukm">
+                      <option>Pilih UKM</option>
+                      @foreach ($ukm as $data)
+                      <option value="{{$data->nama_ukm}}">{{ $data->nama_ukm }}</option>
+                      @endforeach
                   </select>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="x_content">
-                    <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage">
+                    <input type="file" name="foto" id="foto">
                     <br />
                   </div>
                 </div>
@@ -152,7 +152,14 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">ID Member</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" id="id" class="form-control" required="required" readonly>
+                  <input type="text" id="id_member" class="form-control" required="required" readonly>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">UKM </label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" id="nama_ukm" class="form-control" required="required" readonly>
                 </div>
               </div>
 
@@ -161,20 +168,6 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input type="email" id="email_member" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">ID UKM </label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="id_ukm" required="required" readonly>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nama_ukm" required="required" readonly="readonly">
                 </div>
               </div>
 

@@ -56,11 +56,12 @@ Route::group(['prefix' => 'superadmin'], function()
     Route::get('madmin/delete/{id}','SuperadminController@deleteadmin');
     // Route untuk member
     Route::get('mmember','SuperadminController@mmember');
-    Route::post('mmember/saveadmin','SuperadminController@savemember');
-    Route::get('detailamember/{id}','SuperadminController@detailmember');
+    Route::post('mmember/savemember','SuperadminController@savemember');
+    Route::get('detailmember/{id}','SuperadminController@detailmember');
     Route::get('editmember/{id}','SuperadminController@detailmember');
     Route::post('updatemember/{id}','SuperadminController@updatemember');
     Route::get('mmember/delete/{id}','SuperadminController@deletemember');
+
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	});
 });
