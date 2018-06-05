@@ -1,4 +1,4 @@
-// Menampilkan pesan error apabila ada error pada saat validasi email
+// Menampilkan pesan error apabila ada error pada saat validasi email di modal create
 $( document ).ready(function() {
   $('.createModal').on('hidden.bs.modal', function(){
     $(this).find(".modal-content").reset();
@@ -29,13 +29,41 @@ $( document ).ready(function() {
   });
 });
 
+// Menampilkan pesan error apabila ada error pada saat validasi email di modal edit
+$( document ).ready(function() {
+  $('.editModal').on('hidden.bs.modal', function(){
+    $(this).find(".modal-content").reset();
+  });
+  $('.errorEmail').hide();
+
+  $('#email_edit').change(function(){
+
+    var emailText = $(this).val();
+
+    $.ajax({
+      url : '/api/checkuser/',
+      type:'get',
+      data: { email: emailText },
+      dataType: 'json',
+      success: function(response) {
+        if(response == "Error") {
+          $('.errorEmail').show();
+          $('.btnSubmitModalMadmin').prop('disabled',true);
+          console.log('error');
+        } else {
+          $('.errorEmail').hide();
+          $('.btnSubmitModalMadmin').prop('disabled',false);
+          console.log('success');
+        }
+      }
+    });
+  });
+});
+
 /* Kelompok javascript untuk admin */
 // menampilkan detail user di modal detail
 $(document).ready(function() {
-  $('.createModal').on('hidden.bs.modal', function(){
-    $(this).find(".modal-content").reset();
-  });
-    $('.detail_admin').click(function(){
+    $('.detail_user').click(function(){
         var users_id = $(this).val();
         var url = 'detailadmin';
         $.get(url + '/' + users_id, function (data) {
@@ -44,7 +72,7 @@ $(document).ready(function() {
             // $('#foto').val(data.foto)
             $('#id').val(data.id);
             $('#nama').val(data.name);
-            $('#email_admin').val(data.email);
+            $('#email_user').val(data.email);
         })
     });
 });
@@ -52,12 +80,13 @@ $(document).ready(function() {
 // menampilkan detail user di modal Edit
 $(document).ready(function() {
 
-    $('.edit_admin').click(function(){
+    $('.edit').click(function(){
         var users_id = $(this).val();
         var url = 'editadmin';
         $.get(url + '/' + users_id, function (data) {
             //success data
-            console.log(data);
+            console.log(data);;
+            $('#id_edit').val(data.id)
             $('#nama_edit').val(data.name);
             $('#email_edit').val(data.email);
 
@@ -68,20 +97,20 @@ $(document).ready(function() {
 
 /* Kelompok javascript untuk admin */
 // menampilkan detail user di modal detail
-$(document).ready(function() {
-    $('.detail_member').click(function(){
-        var users_id = $(this).val();
-        var url = 'detailmember';
-        $.get(url + '/' + users_id, function (data) {
-            //success data
-            console.log(data);
-            $('#id_member').val(data.id);
-            $('#nama_ukm').val(data.name);
-            $('#email_member').val(data.email);
-
-        })
-    });
-});
+// $(document).ready(function() {
+//     $('.detail_member').click(function(){
+//         var users_id = $(this).val();
+//         var url = 'detailmember';
+//         $.get(url + '/' + users_id, function (data) {
+//             //success data
+//             console.log(data);
+//             $('#id_member').val(data.id);
+//             $('#nama_ukm').val(data.email);
+//             $('#email_member').val(data.email);
+//
+//         })
+//     });
+// });
 
 // menampilkan detail user di modal Edit
 $(document).ready(function() {

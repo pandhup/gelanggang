@@ -34,9 +34,9 @@
               <td>
                 <div class="btn-group" role="group" aria-label="...">
                   <!-- veiw button -->
-                  <button type="button" class="btn btn-sm btn-primary detail_member" data-toggle="modal" data-target=".bs-detail-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
+                  <button type="button" class="btn btn-sm btn-primary detail_user" data-toggle="modal" data-target=".bs-detail-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                   <!-- edit button -->
-                  <button type="button" class="btn btn-sm btn-primary edit_member" data-toggle="modal" data-target=".bs-edit-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
+                  <button type="button" class="btn btn-sm btn-primary edit" data-toggle="modal" data-target=".bs-edit-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                   <!-- delete button -->
                   <a href="#" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                 </div>
@@ -125,7 +125,7 @@
 
 <!-- Modal Section -->
 {{-- DETAIL MODAL --}}
-<div class="modal fade bs-detail-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-detail-modal-lg createModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -152,21 +152,21 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">ID Member</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" id="id_member" class="form-control" required="required" readonly>
+                  <input type="text" id="id" class="form-control" required="required" readonly>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">UKM </label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">UKM</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" id="nama_ukm" class="form-control" required="required" readonly>
+                  <input type="text" class="form-control" id="nama" required="required" readonly="readonly">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email_member" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
+                  <input type="email" id="email_user" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>

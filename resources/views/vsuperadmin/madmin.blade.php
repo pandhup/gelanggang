@@ -13,8 +13,8 @@
       <div class="clearfix"></div>
 
       <div class="x_content">
-        </br>
-        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+      </br>
+      <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>No.</th>
@@ -33,9 +33,9 @@
             <td>
               <div class="btn-group" role="group" aria-label="...">
                 <!-- view button -->
-                <button type="button" class="btn btn-sm btn-primary detail_admin" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
+                <button type="button" class="btn btn-sm btn-primary detail_user" data-toggle="modal" data-target=".bs-example-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-eye-open"></i></button>
                 <!-- edit button -->
-                <button type="button" class="btn btn-sm btn-primary edit_admin" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
+                <button type="button" class="btn btn-sm btn-primary edit" data-toggle="modal" data-target=".bs-example1-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                 <!-- delete button -->
                 <a href="{{ url('superadmin/madmin/delete/'.$data->id) }}" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
               </div>
@@ -44,9 +44,9 @@
           @endforeach
         </tbody>
       </table>
-      </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Modal Section -->
@@ -164,7 +164,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email_admin" class="form-control has-feedback-left" data-parsley-trigger="change" required readonly="readonly"/>
+                  <input type="email" id="email_user" class="form-control has-feedback-left" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>
@@ -180,7 +180,7 @@
 </div>
 
 {{-- EDIT MODAL --}}
-<div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-example1-modal-lg editModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
       <div class="modal-header">
@@ -192,19 +192,29 @@
         {{-- modal content --}}
         <div class="x_panel">
           <div class="x_content">
+            <!-- error cek email -->
+            <div id="errorEmail" class="alert alert-error errorEmail" role="alert"><strong>Error</strong> &bull; Maaf email yang ada masukkan telah digunakan</div>
             <br />
-            <form class="form-horizontal form-label-left" method="post" action="{{ url ('superadmin/madmin/updateadmin') }}">
+            <form class="form-horizontal form-label-left" method="post"  action="{{url('superadmin/madmin/updateadmin')}}" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Id Admin</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" id="id_edit" name="id_edit" readonly>
+                </div>
+              </div>
+
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Lengkap</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nama_edit" required="required">
+                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" required="required">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email_edit" class="form-control has-feedback-left" name="email" data-parsley-trigger="change" required />
+                  <input type="email" id="email_edit" class="form-control has-feedback-left" name="email_edit" data-parsley-trigger="change" readonly  />
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>
@@ -212,35 +222,33 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="password" class="form-control" placeholder="password">
+                  <input type="password" id="password_edit" name="password_edit" class="form-control" placeholder="password">
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div class="x_content">
-                    <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage">
-                    <br />
-                  </div>
+                  <input type="file" name="foto" id="foto">
                 </div>
               </div>
 
-              <div class="ln_solid"></div>
-              <div class="form-group">
-                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                  <button type="reset" class="btn btn-primary">Reset</button>
-                  <button type="submit" class="btn btn-success">Submit</button>
-                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                <button type="submit" id="btnSubmitModalMadmin" class="btn btn-success btnSubmitModalMadmin" value="{{$data->id}}">Submit</button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
-      {{-- end modal content --}}
     </div>
+    {{-- end modal content --}}
   </div>
+</div>
 </div>
 </div>
 

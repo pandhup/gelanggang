@@ -52,12 +52,12 @@ Route::group(['prefix' => 'superadmin'], function()
     Route::post('madmin/saveadmin','SuperadminController@saveadmin');
     Route::get('detailadmin/{id}','SuperadminController@detailadmin');
     Route::get('editadmin/{id}','SuperadminController@detailadmin');
-    Route::post('updateadmin/{id}','SuperadminController@updateadmin');
+    Route::post('madmin/updateadmin/','SuperadminController@updateadmin');
     Route::get('madmin/delete/{id}','SuperadminController@deleteadmin');
     // Route untuk member
     Route::get('mmember','SuperadminController@mmember');
     Route::post('mmember/savemember','SuperadminController@savemember');
-    Route::get('detailmember/{id}','SuperadminController@detailmember');
+    Route::get('detailmember/{id}','SuperadminController@detailadmin');
     Route::get('editmember/{id}','SuperadminController@detailmember');
     Route::post('updatemember/{id}','SuperadminController@updatemember');
     Route::get('mmember/delete/{id}','SuperadminController@deletemember');

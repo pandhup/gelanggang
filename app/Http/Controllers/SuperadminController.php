@@ -33,7 +33,7 @@ class SuperadminController extends Controller
     return view('vsuperadmin.home');
   }
 
-// Mengecek validasi email user
+  // Mengecek validasi email user
   public function checkuser(Request $request)
   {
     $user_check = User::all()->Where('email', $request->email)->count();
@@ -52,25 +52,9 @@ class SuperadminController extends Controller
     return view('vsuperadmin.madmin', ['admin' => $admin]);
   }
 
-// fungsiuntuk menambah admin baru
+  // fungsiuntuk menambah admin baru
   public function saveadmin(Request $request){
-    $validator = Validator::make($request->all(), [
-      'name' => 'required|string|max:255',
-      'email' => 'required|string|email|unique:users',
-      'password' => 'required|string|min:6|confirmed',
-      'foto' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-    ]);
 
-    // $user_check = User::all()->Where('email',Input::get('email'))->count();
-    // if ($user_check > 0) {
-    //   return back();
-    // }else {
-
-
-    if ($validator->fails()) {
-        return redirect('superadmin/madmin')
-            ->withErrors($validator);
-    }
     // script upload gambar
     $file = $request->file('foto');
     $fileName = $file->getClientOriginalName();
@@ -87,16 +71,40 @@ class SuperadminController extends Controller
 
     $admin->save();
 
-
     return redirect('superadmin/madmin');
   }
   // }
 
-public function detailadmin($id)
-{
-  $admin = User::find($id);
-  return response()->json($admin);
-}
+  public function detailadmin($id)
+  {
+    $admin = User::find($id);
+    return response()->json($admin);
+  }
+
+  public function updateadmin(Request $request)
+  {
+    $id = Input::get('id_edit');
+    $admin = User::find($id);
+    $admin->name = Input::get('nama_edit');
+    // $admin->email = Input::get('email_edit');
+    if (Input::get('password') != "") {
+      $admin->password = bcrypt(Input::get('password_edit'));
+    }
+    $admin->role = 'admin';
+    if ($request->hasFile('foto')) {
+      if ($admin->foto!="") {
+        Storage::disk('public')->delete('images/'.$admin->foto);
+      }
+
+      $file = $request->file('foto');
+      $fileName = $file->getClientOriginalName();
+      $request->file('foto')->storeAs('public/images', $fileName);;
+      $admin->foto = $fileName;
+    }
+
+    $admin->save();
+    return redirect('superadmin/madmin');
+  }
 
   // fungsi untuk menghapus user
   public function deleteadmin($id)
@@ -108,11 +116,11 @@ public function detailadmin($id)
 
     return redirect('superadmin/madmin')->with('sukses_delete', 'yes');
   }
-// Batas Kelompok
+  // Batas Kelompok
 
-// Kelompok fungsi untuk Member
+  // Kelompok fungsi untuk Member
 
-// menampilkan daftar member
+  // menampilkan daftar member
   public function mmember()
   {
     $member = DB::table('users')
@@ -127,16 +135,9 @@ public function detailadmin($id)
 
   public function savemember( Request $request)
   {
-    $validator = Validator::make($request->all(), [
-      'name' => 'required|string|max:255',
-      'email' => 'required|string|email|unique:users',
-      'password' => 'required|string|min:6|confirmed',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('superadmin/madmin')
-            ->withErrors($validator);
-    }
+    $file = $request->file('foto');
+    $fileName = $file->getClientOriginalName();
+    $request->file('foto')->storeAs('public/images', $fileName);
 
     $member = new User;
     // $data->nama_field_di_database = Input::get('nama_field_di_form');
@@ -144,6 +145,7 @@ public function detailadmin($id)
     $member->email = Input::get('email');
     $member->password = bcrypt(Input::get('password'));
     $member->role = 'member';
+    $member->foto = $fileName;
 
     $member->save();
 
@@ -165,6 +167,6 @@ public function detailadmin($id)
     $data -> delete($id);
     return redirect('superadmin/mmember')->with('sukses_delete', 'yes');
   }
-//Batas Kelompok
+  //Batas Kelompok
 
 }
