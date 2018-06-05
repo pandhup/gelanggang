@@ -38,7 +38,7 @@
                   <!-- edit button -->
                   <button type="button" class="btn btn-sm btn-primary edit" data-toggle="modal" data-target=".bs-edit-modal-lg" value="{{ $data->id }}"><i class="glyphicon glyphicon-pencil"></i></button>
                   <!-- delete button -->
-                  <a href="#" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                  <a href="{{ url('superadmin/mmember/delete/'.$data->id) }}" onclick="return confirm('Are you sure to delete this data?')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
                 </div>
               </td>
             </tr>
@@ -195,26 +195,27 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left">
+            <form class="form-horizontal form-label-left" method="post" action="{{url('superadmin/mmember/updatemember/')}}">
+              {{ csrf_field() }}
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Id Admin</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <select class="form-control">
-                      <option>Choose option</option>
-                      <option>Option one</option>
-                      <option>Option two</option>
-                      <option>Option three</option>
-                      <option>Option four</option>
-                    </select>
-                  </div>
+                  <input type="text" class="form-control" id="id_edit" name="id_edit" readonly>
                 </div>
               </div>
 
               <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" required="required" readonly="readonly">
+                </div>
+              </div>
+
+
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">E-Mail</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="email" id="email" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" required />
+                  <input type="email_edit" id="email_edit" class="form-control has-feedback-left" placeholder="contoh@mail.com" name="email" data-parsley-trigger="change" readonly />
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                 </div>
               </div>
@@ -222,7 +223,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="password" class="form-control" placeholder="password">
+                  <input type="password" id="password_edit" name="password_edit" class="form-control" placeholder="password">
                 </div>
               </div>
 
@@ -230,7 +231,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Foto</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="x_content">
-                    <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage">
+                    <input type="file" id="foto" name="foto">
                     <br />
                   </div>
                 </div>

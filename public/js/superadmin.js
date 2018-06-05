@@ -93,24 +93,6 @@ $(document).ready(function() {
         })
     });
 });
-/* batasan Kelompok */
-
-/* Kelompok javascript untuk admin */
-// menampilkan detail user di modal detail
-// $(document).ready(function() {
-//     $('.detail_member').click(function(){
-//         var users_id = $(this).val();
-//         var url = 'detailmember';
-//         $.get(url + '/' + users_id, function (data) {
-//             //success data
-//             console.log(data);
-//             $('#id_member').val(data.id);
-//             $('#nama_ukm').val(data.email);
-//             $('#email_member').val(data.email);
-//
-//         })
-//     });
-// });
 
 // menampilkan detail user di modal Edit
 $(document).ready(function() {

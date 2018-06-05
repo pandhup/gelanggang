@@ -27,6 +27,7 @@ class SuperadminController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
+
   // Menampilkan halaman home
   public function index()
   {
@@ -44,58 +45,46 @@ class SuperadminController extends Controller
 
 
   // Kelompok fungsi untuk admin
-
-  // menampilkan daftar admin
-  public function madmin()
+  public function madmin()  //menampilkan data admin
   {
     $admin = User::all()->where('role','=','admin');
     return view('vsuperadmin.madmin', ['admin' => $admin]);
   }
 
-  // fungsiuntuk menambah admin baru
-  public function saveadmin(Request $request){
-
-    // script upload gambar
-    $file = $request->file('foto');
-    $fileName = $file->getClientOriginalName();
-    $request->file('foto')->storeAs('public/images', $fileName);
-
+  public function saveadmin(Request $request){  //tambah admin baru
     $admin = new User;
 
-    // $data->nama_field_di_database = Input::get('nama_field_di_form');
     $admin->name = Input::get('name');
     $admin->email = Input::get('email');
     $admin->password = bcrypt(Input::get('password'));
     $admin->role = 'admin';
-    $admin->foto = $fileName;
+    // script upload gambar
+    if ($request->hasFile('foto')) {
+      $file = $request->file('foto');
+      $fileName = $file->getClientOriginalName();
+      $request->file('foto')->storeAs('public/images', $fileName);
+      $admin->foto = $fileName;
+    }
 
     $admin->save();
 
     return redirect('superadmin/madmin');
   }
-  // }
 
-  public function detailadmin($id)
-  {
-    $admin = User::find($id);
-    return response()->json($admin);
-  }
 
-  public function updateadmin(Request $request)
+  public function updateadmin(Request $request)   //update data admin
   {
     $id = Input::get('id_edit');
     $admin = User::find($id);
     $admin->name = Input::get('nama_edit');
-    // $admin->email = Input::get('email_edit');
     if (Input::get('password') != "") {
       $admin->password = bcrypt(Input::get('password_edit'));
     }
     $admin->role = 'admin';
     if ($request->hasFile('foto')) {
       if ($admin->foto!="") {
-        Storage::disk('public')->delete('images/'.$admin->foto);
+        Storage::disk('public')->delete('images/'.$admin->foto); //delete foto lama jika ada
       }
-
       $file = $request->file('foto');
       $fileName = $file->getClientOriginalName();
       $request->file('foto')->storeAs('public/images', $fileName);;
@@ -106,67 +95,84 @@ class SuperadminController extends Controller
     return redirect('superadmin/madmin');
   }
 
-  // fungsi untuk menghapus user
-  public function deleteadmin($id)
+  public function deleteadmin($id)    //delete user admin
   {
     $data = User::find($id);
     $foto = $data->foto;
     Storage::disk('public')->delete('images/'.$foto);
     $data -> delete($id);
 
-    return redirect('superadmin/madmin')->with('sukses_delete', 'yes');
+    return redirect('superadmin/madmin');
   }
   // Batas Kelompok
 
+
   // Kelompok fungsi untuk Member
-
-  // menampilkan daftar member
-  public function mmember()
+  public function mmember()   //menampilkan daftar member
   {
-    $member = DB::table('users')
-    -> where('role','=','member')
-    -> select('*')
-    -> get();
-
-    $ukm = DB::table('ukm')->select('id_ukm','nama_ukm')->orderBy('nama_ukm','asc')->get();
+    $member = User::all() -> where('role','=','member');
+    $ukm = Ukm::orderBy('nama_ukm','ASC')->get();
 
     return view('vsuperadmin.mmember') -> with('member',$member) -> with('ukm',$ukm);
   }
 
-  public function savemember( Request $request)
+  public function savemember( Request $request)   //tambah data member baru
   {
-    $file = $request->file('foto');
-    $fileName = $file->getClientOriginalName();
-    $request->file('foto')->storeAs('public/images', $fileName);
-
     $member = new User;
-    // $data->nama_field_di_database = Input::get('nama_field_di_form');
+
     $member->name = Input::get('nama_ukm');
     $member->email = Input::get('email');
     $member->password = bcrypt(Input::get('password'));
     $member->role = 'member';
-    $member->foto = $fileName;
+    //script upload gambar
+    if ($request->hasFile('foto')) {
+      $file = $request->file('foto');
+      $fileName = $file->getClientOriginalName();
+      $request->file('foto')->storeAs('public/images', $fileName);
+      $member->foto = $fileName;
+    }
 
     $member->save();
 
     return redirect('superadmin/mmember');
   }
 
-  public function detailmember($id)
+  public function updatemember(Request $request)   //update data member
   {
+    $id = Input::get('id_edit');
     $member = User::find($id);
-    return response()->json($member);
+    $member->name = Input::get('nama_edit');
+    if (Input::get('password') != "") {
+      $member->password = bcrypt(Input::get('password_edit'));
+    }
+    $member->role = 'member';
+    if ($request->hasFile('foto')) {
+      if ($member->foto!="") {
+        Storage::disk('public')->delete('images/'.$member->foto); //delete foto lama jika ada
+      }
+      $file = $request->file('foto');
+      $fileName = $file->getClientOriginalName();
+      $request->file('foto')->storeAs('public/images', $fileName);;
+      $member->foto = $fileName;
+    }
+
+    $member->save();
+    return redirect('superadmin/mmember');
   }
 
-
-  // fungsi untuk menghapus member
-  public function deletemember($id)
+  public function deletemember($id)   //delete user member
   {
-
     $data = User::find($id);
+    Storage::disk('public')->delete('images/'.$data->foto);
     $data -> delete($id);
-    return redirect('superadmin/mmember')->with('sukses_delete', 'yes');
+    return redirect('superadmin/mmember');
   }
   //Batas Kelompok
 
+  // Menampilkan detail user pada modal Detail
+  public function detailuser($id)
+  {
+    $admin = User::find($id);
+    return response()->json($admin);
+  }
 }

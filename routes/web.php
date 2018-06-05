@@ -50,16 +50,16 @@ Route::group(['prefix' => 'superadmin'], function()
     // Route untuk admin
 		Route::get('madmin','SuperadminController@madmin');
     Route::post('madmin/saveadmin','SuperadminController@saveadmin');
-    Route::get('detailadmin/{id}','SuperadminController@detailadmin');
-    Route::get('editadmin/{id}','SuperadminController@detailadmin');
+    Route::get('detailadmin/{id}','SuperadminController@detailuser');
+    Route::get('editadmin/{id}','SuperadminController@detailuser');
     Route::post('madmin/updateadmin/','SuperadminController@updateadmin');
     Route::get('madmin/delete/{id}','SuperadminController@deleteadmin');
     // Route untuk member
     Route::get('mmember','SuperadminController@mmember');
     Route::post('mmember/savemember','SuperadminController@savemember');
-    Route::get('detailmember/{id}','SuperadminController@detailadmin');
-    Route::get('editmember/{id}','SuperadminController@detailmember');
-    Route::post('updatemember/{id}','SuperadminController@updatemember');
+    Route::get('detailmember/{id}','SuperadminController@detailuser');
+    Route::get('editmember/{id}','SuperadminController@detailuser');
+    Route::post('mmember/updatemember/','SuperadminController@updatemember');
     Route::get('mmember/delete/{id}','SuperadminController@deletemember');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
