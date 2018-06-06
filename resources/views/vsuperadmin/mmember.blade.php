@@ -144,7 +144,7 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="img-preview preview-lg">
-                    <img src="{{asset('images/img.jpg')}}">
+                    <img class="foto" src="">
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
-            <form class="form-horizontal form-label-left" method="post" action="{{url('superadmin/mmember/updatemember/')}}">
+            <form class="form-horizontal form-label-left" method="post" action="{{url('superadmin/mmember/updatemember')}}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Id Admin</label>
@@ -207,7 +207,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" required="required" readonly="readonly">
+                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" required="required" >
                 </div>
               </div>
 

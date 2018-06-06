@@ -140,8 +140,12 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="img-preview preview-lg">
+<<<<<<< HEAD
                     <?php $image = ""; ?>
                     <img src="{{asset('storage/images/'.$image)}}">
+=======
+                    <img class="foto" src="">
+>>>>>>> 9acd4588b825998af54f464daf62cf2c05c17dea
                   </div>
                 </div>
               </div>

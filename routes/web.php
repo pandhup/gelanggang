@@ -59,7 +59,7 @@ Route::group(['prefix' => 'superadmin'], function()
     Route::post('mmember/savemember','SuperadminController@savemember');
     Route::get('detailmember/{id}','SuperadminController@detailuser');
     Route::get('editmember/{id}','SuperadminController@detailuser');
-    Route::post('mmember/updatemember/','SuperadminController@updatemember');
+    Route::post('mmember/updatemember','SuperadminController@updatemember');
     Route::get('mmember/delete/{id}','SuperadminController@deletemember');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
