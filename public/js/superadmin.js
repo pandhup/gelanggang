@@ -69,10 +69,11 @@ $(document).ready(function() {
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);
-            // $('#foto').val(data.foto)
+            $('#foto_user').val(data.foto);
             $('#id').val(data.id);
             $('#nama').val(data.name);
             $('#email_user').val(data.email);
+            var image = $(this).val(data.foto);
         })
     });
 });

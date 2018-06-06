@@ -61,7 +61,8 @@ class SuperadminController extends Controller
     // script upload gambar
     if ($request->hasFile('foto')) {
       $file = $request->file('foto');
-      $fileName = $file->getClientOriginalName();
+      $ext = $file->getClientOriginalExtension();
+      $fileName = date('dmy').'.'.$ext;
       $request->file('foto')->storeAs('public/images', $fileName);
       $admin->foto = $fileName;
     }
@@ -152,7 +153,7 @@ class SuperadminController extends Controller
       }
       $file = $request->file('foto');
       $fileName = $file->getClientOriginalName();
-      $request->file('foto')->storeAs('public/images', $fileName);;
+      $request->file('foto')->storeAs('public/images',$fileName);;
       $member->foto = $fileName;
     }
 

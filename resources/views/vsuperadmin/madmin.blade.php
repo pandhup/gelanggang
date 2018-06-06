@@ -140,9 +140,8 @@
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <div class="img-preview preview-lg">
-                    @if($data->foto != "")
-                    <img src="{{asset('images/img.jpg')}}">
-                    @endif
+                    <?php $image = ""; ?>
+                    <img src="{{asset('storage/images/'.$image)}}">
                   </div>
                 </div>
               </div>
@@ -166,6 +165,13 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input type="email" id="email_user" class="form-control has-feedback-left" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi Foto</label>
+                <div class="col-md-9 col-sm-9 col-xs-12">
+                  <input type="text" class="form-control" id="foto_user" readonly>
                 </div>
               </div>
 
