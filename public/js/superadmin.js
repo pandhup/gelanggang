@@ -69,11 +69,7 @@ $(document).ready(function() {
         $.get(url + '/' + users_id, function (data) {
             //success data
             console.log(data);
-<<<<<<< HEAD
-            $('#foto_user').val(data.foto);
-=======
             $('.foto').attr("src", "http://127.0.0.1:8000/storage/images/" + data.foto);
->>>>>>> 9acd4588b825998af54f464daf62cf2c05c17dea
             $('#id').val(data.id);
             $('#nama').val(data.name);
             $('#email_user').val(data.email);

@@ -133,20 +133,12 @@
         <div class="x_panel">
           <div class="x_content">
             <br />
-            <!-- gambar -->
             <form class="form-horizontal form-label-left">
-
+              <!-- gambar -->
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div class="img-preview preview-lg">
-<<<<<<< HEAD
-                    <?php $image = ""; ?>
-                    <img src="{{asset('storage/images/'.$image)}}">
-=======
-                    <img class="foto" src="">
->>>>>>> 9acd4588b825998af54f464daf62cf2c05c17dea
-                  </div>
+                    <img class="foto" src="" width="300px" height="200px">
                 </div>
               </div>
 
@@ -169,13 +161,6 @@
                 <div class="col-md-9 col-sm-9 col-xs-12">
                   <input type="email" id="email_user" class="form-control has-feedback-left" data-parsley-trigger="change" required readonly="readonly"/>
                   <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi Foto</label>
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="foto_user" readonly>
                 </div>
               </div>
 

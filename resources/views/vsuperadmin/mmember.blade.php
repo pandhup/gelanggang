@@ -143,9 +143,7 @@
                 <!-- foto -->
                 <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div class="img-preview preview-lg">
-                    <img class="foto" src="">
-                  </div>
+                    <img class="foto" src="" height="200px" width="200px">
                 </div>
               </div>
 
@@ -207,7 +205,7 @@
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama UKM</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">
-                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" required="required" >
+                  <input type="text" class="form-control" id="nama_edit" name="nama_edit" readonly>
                 </div>
               </div>
 
