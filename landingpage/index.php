@@ -79,7 +79,7 @@
                     <ol class="carousel-indicators">
                         <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
                         <li data-target="#header-carousel" data-slide-to="1"></li>
-                        <li data-target="#header-carousel" data-slide-to="2"></li>       
+                        <li data-target="#header-carousel" data-slide-to="2"></li>
                     </ol>
 
                     <!-- deklarasi carousel -->
@@ -92,7 +92,7 @@
                         </div>
                         <div class="item">
                             <a href="#"><img class="centered" src="img/3.jpg"></a>
-                        </div>              
+                        </div>
                     </div>
 
                     <!-- membuat panah next dan previous -->
@@ -107,7 +107,7 @@
                 </div>
         </div>
     </header>
-	
+
 	<!-- About Section -->
     <section id="events">
         <div class="container">
@@ -163,7 +163,7 @@
             </div>
         </div>
     </section>
-	
+
     <!-- Services Section -->
     <section id="videos">
         <div class="container">
@@ -205,7 +205,7 @@
                             </div>
                             <div id="panelBodyOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                            
+
                                 </div>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                             </div>
                             <div id="panelBodyTwo" class="panel-collapse collapse">
                                 <div class="panel-body">
-                              
+
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                             </div>
                             <div id="panelBodyThree" class="panel-collapse collapse">
                                 <div class="panel-body">
-                          
+
                                 </div>
                             </div>
                         </div>
@@ -241,7 +241,7 @@
                             </div>
                             <div id="panelBodyFour" class="panel-collapse collapse">
                                 <div class="panel-body">
-                          
+
                                 </div>
                             </div>
                         </div>

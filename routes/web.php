@@ -13,7 +13,8 @@
 
 //akses index all user
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+    // return view('landingpage.index');
 });
 
 

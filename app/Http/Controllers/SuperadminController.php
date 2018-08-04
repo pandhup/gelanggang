@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 use App\Models\User as User;
 use App\Models\Ukm as Ukm;
+use App\Models\Event as Event;
 
 class SuperadminController extends Controller
 {
@@ -31,7 +33,18 @@ class SuperadminController extends Controller
   // Menampilkan halaman home
   public function index()
   {
-    return view('vsuperadmin.home');
+    $admin = User::all()->where('role','=','admin')->count();
+    $member = User::all()->where('role','=','member')->count();
+    $event = Event::all()->count();
+    $eventthismonth = Event::Where('tanggal_mulai','>=',Carbon::now()->startOfMonth())->get()->count();
+    $eventbaru = Event::Where('status','=','belumverif')->count();
+
+    return view('vsuperadmin.home')
+    ->with('admin',$admin)
+    ->with('member',$member)
+    ->with('event',$event)
+    ->with('eventthismonth',$eventthismonth)
+    ->with('eventbaru',$eventbaru);
   }
 
   // Mengecek validasi email user
@@ -164,7 +177,9 @@ class SuperadminController extends Controller
   public function deletemember($id)   //delete user member
   {
     $data = User::find($id);
-    Storage::disk('public')->delete('images/'.$data->foto);
+    if ($data->foto !="") {
+      Storage::disk('public')->delete('images/'.$data->foto);
+    }
     $data -> delete($id);
     return redirect('superadmin/mmember');
   }
