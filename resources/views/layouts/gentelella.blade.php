@@ -26,6 +26,8 @@
   <link href="{{asset('/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
   <!-- bootstrap-progressbar -->
   <link href="{{asset('/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
   <!-- JQVMap -->
@@ -78,9 +80,9 @@
             <div class="menu_section">
               <h3>Management</h3>
               <ul class="nav side-menu">
-                <li><a href="home"><i class="fa fa-home"></i> home </a></li>
-                <li><a href="madmin"><i class="fa fa-user"></i> Admin </a></li>
-                <li><a href="mmember"><i class="fa fa-laptop"></i> Member </a></li>
+                <li><a href="{{url ('superadmin/home')}}"><i class="fa fa-home"></i> home </a></li>
+                <li><a href="{{url('superadmin/madmin')}}"><i class="fa fa-user"></i> Admin </a></li>
+                <li><a href="{{url('superadmin/mmembe')}}r"><i class="fa fa-laptop"></i> Member </a></li>
               </ul>
             </div>
             <div class="menu_section">
@@ -236,6 +238,8 @@
   <script src="{{asset('/vendors/jszip/dist/jszip.min.js')}}"></script>
   <script src="{{asset('/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
   <script src="{{asset('/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
   <!-- Dropzone.js -->
   <script src="{{asset('/vendors/dropzone/dist/min/dropzone.min.js')}}"></script>
 
